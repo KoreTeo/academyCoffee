@@ -1,0 +1,352 @@
+/*общие правила*/
+
+* {
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+a:active {
+    opacity: 0.5;
+}
+
+/*header*/
+
+.main-header{
+    width: 1230px;
+    margin: 25px auto 65px;
+    font-size: 16px;
+}
+
+.nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    margin-right: 260px;
+    align-items: center;
+}
+
+.logo img {
+    display: block;
+}
+
+.container-middle {
+    width: 262px;
+    margin-right: 272px;
+    display: flex;
+    justify-content: space-between;
+    gap: 52px;
+    align-items: center;
+}
+
+.container-right {
+    width: 204px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart {
+    border: 2px solid #252525;
+    border-radius: 15px;
+    padding: 5px 21px;
+}
+
+/*hit section*/
+
+.hit {
+    width: 1230px;
+    margin: 0 auto 65px;
+}
+
+.hit-container {
+    background: rgba(72, 212, 196, 0.29);
+    border-radius: 60px;
+    padding: 55px 0 55px 66px;
+    display: flex;
+}
+
+.container-content {
+    width: 872px;
+    background: #FFFFFF;
+    border-radius: 60px;
+    padding: 56px 143px 53px 71px;
+}
+
+.hit-description h2 {
+    margin: 0 0 8px 0;
+    font-size: 30px;
+    line-height: 37px;
+}
+
+.hit-description p {
+    margin: 0 0 23px 0;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.price-additives-container {
+    display: flex;
+    gap: 37px;
+    margin-bottom: 33px;
+}
+
+.price-container {
+    margin-right: 37px;
+}
+
+.new-price {
+    font-size: 36px;
+    font-weight: bold;
+    color: #38B9A9;
+    margin: 0 0 3px;
+    line-height: 44px;
+}
+
+.old-price {
+    font-weight: bold;
+    margin: 0;
+    line-height: 24px;
+}
+
+.additives {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.borrow {
+    padding-bottom: 11px;
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    border-bottom: 1px solid #D8D8D8;
+    width: 485px;
+    text-align: center;
+}
+
+.additives-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.additives-list li {
+    display: flex;
+}
+
+.additives-list li p {
+    margin-right: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.hit-product {
+    display: block;
+    position: relative;
+    top: 46px;
+    left: -85px;
+}
+
+.button-to-cart {
+    width: 136px;
+    height: 40px;
+    background: rgba(171, 145, 105, 0.92);
+    border-radius: 35px;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+/*menu section*/
+
+.menu-categories {
+    display: flex;
+    width: 1440px;
+    margin: 0 auto 65px;
+    gap: 62px;
+    align-items: center;
+}
+
+.menu-left-line {
+    width: 326px;
+    border-top: 5px solid #D8D8D8;
+}
+
+.menu-right-line {
+    width: 326px;
+    border-top: 5px solid #D8D8D8;
+}
+
+.menu-categories-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 75px;
+}
+
+.menu-categories-list-item img {
+    display: block;
+    margin-bottom: 22px;
+}
+
+.menu-categories-list-item p {
+    margin: 0;
+    width: 171px;
+    text-align: center;
+}
+
+/*philosophy section*/
+
+.philosophy {
+    width: 1230px;
+    margin: 0 auto 65px;
+}
+
+.philosophy h2 {
+    font-size: 32px;
+    line-height: 39px;
+    margin: 0 0 45px;
+    text-align: center;
+}
+
+.philosophy-list {
+    margin: 0 75px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 91px;
+}
+
+.philosophy-list-item {
+    width: 298px;
+}
+
+.philosophy-list-item h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    line-height: 29px;
+    padding-bottom: 5px;
+    border-bottom: 5px solid rgba(72, 212, 196, 0.29);
+    text-align: center;
+}
+
+.philosophy-list-item p {
+    margin: 0;
+    text-align: justify;
+}
+
+/*email subscribe section*/
+
+.email-subscribe {
+    width: 418px;
+    margin: 0 auto;
+    border: 3px solid #000000;
+    border-radius: 49px;
+    padding: 30px 41px 36px;
+}
+
+.email-subscribe p {
+    margin: 0 0 18px;
+    text-align: justify;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.email-subscribe p span {
+    font-size: 30px;
+}
+
+.email-subscribe-form {
+    width: 344px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 85px;
+    padding: 8px 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify;
+}
+
+/*footer*/
+
+.main-footer {
+    margin: 65px 0 0;
+    background: #F3F3F3;
+}
+
+.main-footer-container {
+    width: 1230px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.bottom-logo {
+    display: block;
+    margin-right: 135px;
+}
+
+.main-footer-nav {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 70px;
+    margin: 0 205px 0 0;
+}
+
+.main-footer-link {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.socials-list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0 85px 0 0;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 15px;
+    gap: 14px;
+}
