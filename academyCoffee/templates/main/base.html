@@ -7,7 +7,8 @@
     <meta lang="ru">
     <meta name="keywords" content="Академия Кофе, кофейня" />
     <meta name="description" content="Академия Кофе" />
-    <link rel="icon" href="{% static 'home/img/akademiacoffee-favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    <link rel="icon" href="{% static 'base/img/akademiacoffee-favicon.png' %}">
     <title>{{ title }}</title>
     {% block style %}
     {% endblock %}
@@ -18,8 +19,8 @@
 <body>
     <header class="main-header">
         <nav class="nav-bar">
-            <a href="{% url 'home' %}"><img class="nav-bar-item logo" src="{% static 'home/img/logo.svg' %}" width="200" height="33"
-                     alt="Логотип"></a>
+            <a href="{% url 'home' %}"><img class="nav-bar-item logo" src="{% static 'base/img/logo.svg' %}" width="200" height="33"
+                                            alt="Логотип"></a>
             <div class="container-middle">
                 <a class="nav-bar-item" href="{% url 'menu' %}">Меню</a>
                 <a class="nav-bar-item" href="{% url 'about' %}">О нас</a>
@@ -28,7 +29,7 @@
             <div class="container-right">
                 <a class="nav-bar-item cart" href="{% url 'cart' %}">Корзина</a>
                 <a class="nav-bar-item" href="{% url 'personalaccount' %}">
-                    <img src="{% static 'home/img/personal_account.svg' %}" width="33" height="33" alt="Личный кабинет">
+                    <img src="{% static 'base/img/personal_account.svg' %}" width="33" height="33" alt="Личный кабинет">
                 </a>
             </div>
         </nav>
@@ -37,7 +38,7 @@
     {% endblock %}
     <footer class="main-footer">
     <div class="main-footer-container">
-      <a href="{% url 'home' %}"><img class="bottom-logo" src="{% static 'home/img/bottom_logo.svg' %}" width="74" height="74" alt="Логотип"></a>
+      <a href="{% url 'home' %}"><img class="bottom-logo" src="{% static 'base/img/bottom_logo.svg' %}" width="74" height="74" alt="Логотип"></a>
       <ul class="main-footer-nav">
         <li>
           <a href="{% url 'menu' %}" class="main-footer-link">Меню</a>
@@ -54,10 +55,10 @@
       </ul>
       <ul class="socials-list">
         <li>
-          <a href="#"><img src="{% static 'home/img/telegram.svg' %}" width="31" height="28" alt="Телеграм"></a>
+          <a href="#"><img src="{% static 'base/img/telegram.svg' %}" width="31" height="28" alt="Телеграм"></a>
         </li>
         <li>
-          <a href="#"><img src="{% static 'home/img/vk.svg' %}" width="30" height="28" alt="VK"></a>
+          <a href="#"><img src="{% static 'base/img/vk.svg' %}" width="30" height="28" alt="VK"></a>
         </li>
       </ul>
       <div class="contacts">
