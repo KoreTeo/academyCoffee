@@ -6,9 +6,9 @@
     <meta lang="ru">
     <meta name="keywords" content="Академия Кофе, кофейня" />
     <meta name="description" content="Академия Кофе" />
-    <link rel="icon" href="../akademiacoffee-favicon.png">
+    <link rel="icon" href="{% static 'home/img/akademiacoffee-favicon.png' %}">
     <title>Академия кофе</title>
-    <link rel="stylesheet" href=" {% static 'home/css/style.css' % } ">
+    <link rel="stylesheet" href=" {% static 'home/css/style.css'%} ">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <body>
     <header class="main-header">
         <nav class="nav-bar">
-            <img class="nav-bar-item logo" src="img/logo.svg" width="200" height="33"
+            <img class="nav-bar-item logo" src="{% static 'home/img/logo.svg' %}" width="200" height="33"
                      alt="Логотип">
             <div class="container-middle">
                 <a class="nav-bar-item" href="../menu/menu.html">Меню</a>
