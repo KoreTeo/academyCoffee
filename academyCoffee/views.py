@@ -32,24 +32,24 @@ def create(request):
 
 
 def cart(request):
-    return render(request, 'main/cart.html')
+    return render(request, 'main/cart.html', {'title': "Корзина"})
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'main/index.html', {'title': "Академия кофе"})
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    return render(request, 'main/about.html', {'title': "О нас"})
 
 
 def personalaccount(request):
-    return render(request, 'main/personalaccount.html')
+    return render(request, 'main/personalaccount.html', {'title': "Личный кабинет"})
 
 
 def stocks(request):
-    return render(request, 'main/stocks.html')
+    return render(request, 'main/stocks.html', {'title': "Акции"})
 
 
 def menu(request):
-    return render(request, 'main/menu.html')
+    return render(request, 'main/menu.html', {'title': "Меню"})

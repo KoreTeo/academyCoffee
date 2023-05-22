@@ -1,37 +1,11 @@
+{% extends 'main/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta lang="ru">
-    <meta name="keywords" content="Академия Кофе, кофейня" />
-    <meta name="description" content="Академия Кофе" />
-    <link rel="icon" href="{% static 'home/img/akademiacoffee-favicon.png' %}">
-    <title>Академия кофе</title>
-    <link rel="stylesheet" href=" {% static 'home/css/style.css'%} ">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="main-header">
-        <nav class="nav-bar">
-            <img class="nav-bar-item logo" src="{% static 'home/img/logo.svg' %}" width="200" height="33"
-                     alt="Логотип">
-            <div class="container-middle">
-                <a class="nav-bar-item" href="{% url 'menu' %}">Меню</a>
-                <a class="nav-bar-item" href="{% url 'about' %}">О нас</a>
-                <a class="nav-bar-item" href="{% url 'stocks' %}">Акции</a>
-            </div>
-            <div class="container-right">
-                <a class="nav-bar-item cart" href="{% url 'cart' %}">Корзина</a>
-                <a class="nav-bar-item" href="{% url 'personalaccount' %}">
-                    <img src="img/personal_account.svg" width="33" height="33" alt="Личный кабинет">
-                </a>
-            </div>
-        </nav>
-    </header>
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
     <main class="main">
         <section class="hit">
             <div class="hit-container">
@@ -53,37 +27,37 @@
                             <ul class="additives-list">
                                 <li class="additives-list-item">
                                     <p>Круассан</p>
-                                    <img src="img/croissant.png" width="54" height="35" alt="Круассан">
+                                    <img src="{% static 'home/img/croissant.png' %}" width="54" height="35" alt="Круассан">
                                 </li>
                                 <li class="additives-list-item">
                                     <p>Маффин</p>
-                                    <img src="img/muffin.png" width="39" height="41" alt="Маффин">
+                                    <img src="{% static 'home/img/muffin.png' %}" width="39" height="41" alt="Маффин">
                                 </li>
                                 <li class="additives-list-item">
                                     <p>Бейгл</p>
-                                    <img src="img/bagel.png" width="47" height="39" alt="Бейгл">
+                                    <img src="{% static 'home/img/bagel.png' %}" width="47" height="39" alt="Бейгл">
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <button class="button-to-cart">В корзину</button>
                 </div>
-                <img class="hit-product" src="img/cappuccino_salt_caramel.png" width="179" height="330" alt="Капучино Солёная карамель">
+                <img class="hit-product" src="{% static 'home/img/cappuccino_salt_caramel.png' %}" width="179" height="330" alt="Капучино Солёная карамель">
             </div>
         </section>
         <section class="menu-categories">
             <div class="menu-left-line"></div>
             <ul class="menu-categories-list">
                 <li class="menu-categories-list-item">
-                    <img src="img/omelet.png" width="171" height="171" alt="Яичница">
+                    <img src="{% static 'home/img/omelet.png' %}" width="171" height="171" alt="Яичница">
                     <p>Завтраки</p>
                 </li>
                 <li class="menu-categories-list-item">
-                    <img src="img/tea_on_table.png" width="171" height="171" alt="Чай">
+                    <img src="{% static 'home/img/tea_on_table.png' %}" width="171" height="171" alt="Чай">
                     <p>Напитки</p>
                 </li>
                 <li class="menu-categories-list-item">
-                    <img src="img/cupcakes.png" width="171" height="171" alt="Капкейки">
+                    <img src="{% static 'home/img/cupcakes.png' %}" width="171" height="171" alt="Капкейки">
                     <p>Дессерты</p>
                 </li>
             </ul>
@@ -127,36 +101,4 @@
             </form>
         </section>
     </main>
-    <footer class="main-footer">
-        <div class="main-footer-container">
-            <a><img class="bottom-logo" src="img/bottom_logo.svg" width="74" height="74" alt="Логотип"></a>
-            <ul class="main-footer-nav">
-                <li>
-                    <a href="../menu/menu.html" class="main-footer-link">Меню</a>
-                </li>
-                <li>
-                    <a href="#" class="main-footer-link">О нас</a>
-                </li>
-                <li>
-                    <a href="#" class="main-footer-link">Контакты</a>
-                </li>
-                <li>
-                    <a href="#" class="main-footer-link">Адреса</a>
-                </li>
-            </ul>
-            <ul class="socials-list">
-                <li>
-                    <a href="#"><img src="img/telegram.svg" width="31" height="28" alt="Телеграм"></a>
-                </li>
-                <li>
-                    <a href="#"><img src="img/vk.svg" width="30" height="28" alt="VK"></a>
-                </li>
-            </ul>
-            <div class="contacts">
-                <a href="tel:+78000000000">8(800)000-00-00</a>
-                <a href="mailto:nazvaniecofeyni@yandex.ru">nazvaniecofeyni@yandex.ru</a>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}

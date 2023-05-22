@@ -1,3 +1,4 @@
+{% load static %}
 /*общие правила*/
 
 * {
@@ -123,20 +124,17 @@ ul {
 .first-item {
     width: 246px;
     height: 204px;
-    background: url("/pages/menu/img/холодные_напитки.png");
 
 }
 
 .second-item {
     width: 600px;
     height: 204px;
-    background: url("/pages/menu/img/авторские_напитки.png");
 }
 
 .third-item {
     width: 246px;
     height: 204px;
-    background: url("/pages/menu/img/горячие_напитки.png");
 }
 
 .second-row-category {
@@ -146,7 +144,6 @@ ul {
 .fourth-item {
     width: 1230px;
     height: 160px;
-    background: url("/pages/menu/img/сезонные_напитки.png");
 }
 
 .third-row-category {
@@ -157,13 +154,11 @@ ul {
 .fifth-item {
     width: 578px;
     height: 204px;
-    background: url("/pages/menu/img/к_кофе.png");
 }
 
 .sixth-item {
     width: 577px;
     height: 204px;
-    background: url("/pages/menu/img/наша_кухня.png");
 }
 
 /* seasonal drinks section */
