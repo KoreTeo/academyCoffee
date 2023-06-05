@@ -36,163 +36,175 @@
     <section id="seasonal-drinks">
       <h2>СЕЗОННЫЕ НАПИТКИ</h2>
       <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/чай_абрикосовый_с_дубом.png' %}" alt="Чай абрикосовый с дубом">
-          </div>
-          <h3>
-            Чай абрикосовый с дубом
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+          {% for product in productsWithCategory1 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
     <section id="hot-drinks">
       <h2>ГОРЯЧИЕ НАПИТКИ</h2>
       <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/Латте_Итальянская_Фисташка.png' %}" width="93" height="166" alt="Латте Итальянская Фисташка">
-          </div>
-          <h3>
-            Латте Итальянская Фисташка
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+          {% for product in productsWithCategory2 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
     <section id="cold-drinks">
       <h2>ХОЛОДНЫЕ НАПИТКИ</h2>
       <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/Латте_Итальянская_Фисташка.png' %}" width="93" height="166" alt="Латте Итальянская Фисташка">
-          </div>
-          <h3>
-            Латте Итальянская Фисташка
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+          {% for product in productsWithCategory3 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
     <section id="author-drinks">
       <h2>АВТОРСКИЕ НАПИТКИ</h2>
       <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/Латте_Итальянская_Фисташка.png' %}" width="93" height="166" alt="Латте Итальянская Фисташка">
-          </div>
-          <h3>
-            Латте Итальянская Фисташка
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+          {% for product in productsWithCategory4 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
     <section id="to-coffee">
       <h2>К КОФЕ</h2>
-      <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/Латте_Итальянская_Фисташка.png' %}" width="93" height="166" alt="Латте Итальянская Фисташка">
-          </div>
-          <h3>
-            Латте Итальянская Фисташка
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+        <ul class="drinks-list">
+          {% for product in productsWithCategory5 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
     <section id="our-kitchen">
       <h2>НАША КУХНЯ</h2>
       <ul class="drinks-list">
-        <li class="drinks-list-item">
-          <div class="container-images">
-            <div class="star-counter">
-              <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-              <p class="star-number">
-                4.5
-              </p>
-            </div>
-            <img src="{% static 'menu/img/Латте_Итальянская_Фисташка.png' %}" width="93" height="166" alt="Латте Итальянская Фисташка">
-          </div>
-          <h3>
-            Латте Итальянская Фисташка
-          </h3>
-          <div class="price-container">
-            <p class="price">
-              220 руб.
-            </p>
-            <button class="button-to-cart">
-              Добавить в корзину
-            </button>
-          </div>
-        </li>
+          {% for product in productsWithCategory6 %}
+                <li class="drinks-list-item">
+                  <div class="container-images">
+                    <div class="star-counter">
+                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                      <p class="star-number">
+                          {{ product.stars }}
+                      </p>
+                    </div>
+                    <img src="{{ product.image.url }}" width="93" height="166">
+                  </div>
+                  <h3>
+                    {{ product.name }}
+                  </h3>
+                  <div class="price-container">
+                    <p class="price">
+                      {{ product.price }} рублей
+                    </p>
+                    <button class="button-to-cart">
+                      Добавить в корзину
+                    </button>
+                  </div>
+                </li>
+          {% endfor %}
       </ul>
     </section>
   </main>
