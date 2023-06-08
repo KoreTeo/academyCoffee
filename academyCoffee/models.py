@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 
 class ProductCategory(models.Model):
@@ -25,3 +27,15 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+
+class User(AbstractUser):
+    regions = [
+        ('Красноярск', 'Красноярск'),
+        ('Москва', 'Москва'),
+        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Новосибирск', 'Новосибирск'),
+    ]
+    region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
+    PNumber = models.PositiveIntegerField('Номер телефона')
+    DateOfBirth = models.DateField("День рождения", default=timezone.now)
