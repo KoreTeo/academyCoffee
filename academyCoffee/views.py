@@ -18,6 +18,10 @@ def personalaccount(request):
     return render(request, 'main/personalaccount.html', {'title': "Личный кабинет"})
 
 
+def orderhistory(request):
+    return render(request, 'main/orderhistory.html', {'title': "История заказов"})
+
+
 def stocks(request):
     return render(request, 'main/stocks.html', {'title': "Акции"})
 

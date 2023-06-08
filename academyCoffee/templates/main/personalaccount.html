@@ -1,13 +1,148 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block style %}
+    <link rel="stylesheet" href="{% static 'personalaccount/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="up-line-container">
+        <h2 class="personal-up-title">Личный кабинет</h2>
+            <a class="log-out">Выйти</a>
+    </div>
+    <div class="personal-line"></div>
+<div class="main-container">
+    <div class="personal-account-left-container">
+        <img class="personal-avatar" src="{{ personalaccount.image.url }}" width="120" height="120">
+        <p class="personal-name">{{ personalaccount.name }}Филипчук Филипп</p>
+        <ul class="personal-account-nav-list">
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link">
+                    Текущий заказ
+                </a>
+            </li>
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link active-link">
+                    Личные данные
+                </a>
+            </li>
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link" href="{% url 'orderhistory' %}" >
+                    История заказов
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="personal-account-right-container">
+        <section class="personal-account-info">
+            <div class="change-container">
+                <div class="change-up-container">
+                    <div class="change-up-container-title">
+                        <h3 class="change-title">Имя</h3>
+                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                    </div>
+                    <img class="description-image" src="{% static 'personalaccount/img/account.png' %}">
+                </div>
+                <div class="personal-account-info-line"></div>
+                <p class="personal-account-info-name">Имя Фамилия</p>
+            </div>
+            <div class="change-container">
+                <div class="change-up-container">
+                    <div class="change-up-container-title">
+                        <h3 class="change-title">Дата рождения</h3>
+                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                    </div>
+                    <img class="description-image" src="{% static 'personalaccount/img/calendar.png' %}">
+                </div>
+                <div class="personal-account-info-line"></div>
+                <p class="personal-account-info-date">19 июля 2004</p>
+            </div>
+            <div class="change-container">
+                <div class="change-up-container">
+                    <div class="change-up-container-title">
+                        <h3 class="change-title">Регион</h3>
+                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                    </div>
+                    <img class="description-image" src="{% static 'personalaccount/img/planet.png' %}">
+                </div>
+                <div class="personal-account-info-line"></div>
+                <p class="personal-account-info-region">г. Красноярск</p>
+            </div>
+            <div class="change-container">
+                <div class="change-up-container">
+                    <div class="change-up-container-title">
+                        <h3 class="change-title">Телефон</h3>
+                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                    </div>
+                    <img class="description-image" src="{% static 'personalaccount/img/messages.png' %}">
+                </div>
+                <div class="personal-account-info-line"></div>
+                <p class="personal-account-info-number">+79048980419</p>
+            </div>
+        </section>
+        <section class="payment-methods">
+            <h3 class="payment-method-title">
+                Способ оплаты
+            </h3>
+            <div class="payment-method-container">
+                <div class="chosen-method payment-method">
+                    <div class="payment-method-up-container">
+                        <img src="{% static 'personalaccount/img/check.svg' %}" width="21" height="21">
+                        <p>
+                            Основной способ
+                        </p>
+                    </div>
+                    <div class="payment-method-down-container">
+                        <p class="card-number">***5466</p>
+                        <p class="pull-date">04/29</p>
+                        <img src="{% static 'personalaccount/img/mastercard.svg' %}" width="30" height="20">
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-method-up-container">
+                        <a>
+                            Сделать основным
+                        </a>
+                    </div>
+                    <div class="payment-method-down-container">
+                        <p class="card-number">***5135</p>
+                        <p class="pull-date">05/27</p>
+                        <img src="{% static 'personalaccount/img/mir.png' %}" width="45" height="20">
+                    </div>
+                </div>
+                <a class="add-payment-method">
+                    <img src="{% static 'personalaccount/img/add-card.svg' %}" width="50" height="50">
+                    <p>Добавить новую карту</p>
+                </a>
+            </div>
+        </section>
+        <section class="subscriptions">
+            <h3 class="subscriptions-title">Подписки</h3>
+            <div class="email-subscriptions">
+                <h4>Рассылки на почту</h4>
+                <div class="email-subscriptions-check-container">
+                    <div class="form_radio_btn">
+                        <input id="check-1" type="checkbox" name="radio" value="1">
+                        <label for="check-1">Акции, персональные промокоды<br> и секретные распродажи</label>
+                    </div>
+                    <div class="form_radio_btn">
+                        <input id="check-2" type="checkbox" name="radio" value="2">
+                        <label for="check-2">Личные рекомендации товаров</label>
+                    </div>
+                </div>
+            </div>
+            <div class="SMS-subscriptions">
+                <h4>Рассылки по СМС</h4>
+                <div class="SMS-subscriptions-check-container">
+                    <div class="form_radio_btn">
+                        <input id="check-3" type="checkbox" name="radio" value="3">
+                        <label for="check-3">Включить</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+{% endblock %}

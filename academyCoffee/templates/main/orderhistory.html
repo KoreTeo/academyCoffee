@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'orderhistory/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="up-line-container">
+        <h2 class="personal-up-title">Личный кабинет</h2>
+            <a class="log-out">Выйти</a>
+    </div>
+    <div class="personal-line"></div>
+<div class="main-container">
+    <div class="personal-account-left-container">
+        <img class="personal-avatar" src="{{ personalaccount.image.url }}" width="120" height="120">
+        <p class="personal-name">{{ personalaccount.name }}Филипчук Филипп</p>
+        <ul class="personal-account-nav-list">
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link" href="#" >
+                    Текущий заказ
+                </a>
+            </li>
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link"  href="{% url 'personalaccount' %}">
+                    Личные данные
+                </a>
+            </li>
+            <li class="personal-account-nav-list-item">
+                <a class="personal-account-nav-link active-link">
+                    История заказов
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="order-history-right-container">
+
+    </div>
+</div>
+</main>
+{% endblock %}

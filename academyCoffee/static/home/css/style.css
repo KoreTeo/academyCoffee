@@ -1,4 +1,8 @@
 /*hit section*/
+.main {
+    margin: 0 auto;
+    height: 100%;
+}
 
 .hit {
     width: 1230px;
@@ -8,12 +12,11 @@
 .hit-container {
     background: rgba(72, 212, 196, 0.29);
     border-radius: 60px;
-    padding: 55px 0 55px 66px;
     display: flex;
+    padding: 55px 292px 55px 66px;
 }
 
 .container-content {
-    width: 872px;
     background: #FFFFFF;
     border-radius: 60px;
     padding: 56px 143px 53px 71px;
@@ -29,6 +32,9 @@
     margin: 0 0 23px 0;
     font-weight: 500;
     text-align: justify;
+    width: 535px;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 .price-additives-container {
@@ -38,7 +44,7 @@
 }
 
 .price-container {
-    margin-right: 37px;
+    width: 138px;
 }
 
 .new-price {

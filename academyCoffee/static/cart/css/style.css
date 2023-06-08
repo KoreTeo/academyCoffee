@@ -1,11 +1,5 @@
 /* main */
 
-.main {
-    width: 1230px;
-    margin: 0 auto;
-    height: 100%;
-}
-
 .main-container {
     display: flex;
 }
