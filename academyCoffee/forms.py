@@ -1,6 +1,6 @@
 from .models import Product
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.forms import ModelForm, TextInput, Textarea
 from academyCoffee.models import User
 
@@ -14,6 +14,7 @@ class UserLoginForm(AuthenticationForm):
         'class': 'form-control py-4',
         'placeholder': 'Введите пароль'
     }))
+
     class Meta:
         model = User
         fields = ('username', 'password')
@@ -64,8 +65,15 @@ class UserRegistrationForm(UserCreationForm):
         'class': 'form-control py-4',
         'placeholder': 'Подтвердите пароль'
     }))
+
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'region', 'PNumber', 'DateOfBirth')
+        fields = ('first_name', 'last_name', 'username',
+                  'email', 'password1', 'password2', 'region', 'PNumber', 'DateOfBirth')
 
 
+class UserProfileForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username',
+                  'email', 'region', 'PNumber', 'DateOfBirth')

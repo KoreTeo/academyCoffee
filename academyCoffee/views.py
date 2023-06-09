@@ -22,6 +22,10 @@ def profile(request):
     return render(request, 'users/profile.html', {'title': "Личный кабинет"})
 
 
+def profile2(request):
+    return render(request, 'main/personalaccount.html', {'title': "Личный кабинет"})
+
+
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
