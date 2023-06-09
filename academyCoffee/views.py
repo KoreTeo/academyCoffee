@@ -38,6 +38,7 @@ def profile(request):
         'title': "Личный кабинет",
         'form': form,
         'baskets': Basket.objects.filter(user=request.user),
+        'user': request.user
 
     }
     return render(request, 'users/profile.html', context)
