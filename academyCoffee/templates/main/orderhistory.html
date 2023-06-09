@@ -8,7 +8,7 @@
 {% block content %}
 <main>
     <div class="up-line-container">
-        <h2 class="personal-up-title">Личный кабинет</h2>
+        <h2 class="personal-up-title">История заказов</h2>
             <a class="log-out">Выйти</a>
     </div>
     <div class="personal-line"></div>
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link"  href="{% url 'personalaccount' %}">
+                <a class="personal-account-nav-link"  href="{% url 'profile2' %}">
                     Личные данные
                 </a>
             </li>
@@ -35,7 +35,88 @@
         </ul>
     </div>
     <div class="order-history-right-container">
-
+        <ul class="months-list">
+            <li class="months-list-item">
+                <h3>
+                    Апрель <span class="low-opacity-text">2023</span>
+                </h3>
+                <ul class="order-list">
+                    <li class="order-list-item waiting">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/waiting.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Ожидает</p>
+                                <p class="order-date">14 мая 2023, 15:00</p>
+                            </div>
+                                <p class="total-price">249 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                    <li class="order-list-item done">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/done.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Получен</p>
+                                <p class="order-date">4 мая 2023, 14:30</p>
+                            </div>
+                                <p class="total-price">379 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                    <li class="order-list-item canceled">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/canceled.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Отмене</p>
+                                <p class="order-date">1 мая 2023, 18:27</p>
+                            </div>
+                                <p class="total-price">125 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                </ul>
+            </li>
+            <li class="months-list-item">
+                <h3>
+                    Май <span class="low-opacity-text">2023</span>
+                </h3>
+                <ul class="order-list">
+                    <li class="order-list-item waiting">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/waiting.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Ожидает</p>
+                                <p class="order-date">14 мая 2023, 15:00</p>
+                            </div>
+                                <p class="total-price">249 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                    <li class="order-list-item done">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/done.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Получен</p>
+                                <p class="order-date">4 мая 2023, 14:30</p>
+                            </div>
+                                <p class="total-price">379 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                    <li class="order-list-item canceled">
+                        <div class="order-list-item-container">
+                            <img class="status-image" src="{% static 'orderhistory/img/canceled.svg' %}">
+                            <div class="order-list-item-middle-container">
+                                <p class="status-text">Отмене</p>
+                                <p class="order-date">1 мая 2023, 18:27</p>
+                            </div>
+                                <p class="total-price">125 руб.</p>
+                        </div>
+                        <div class="order-list-line"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
 </main>

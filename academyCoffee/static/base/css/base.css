@@ -5,7 +5,7 @@
 }
 
 main {
-    width: 1230px;
+    min-width: 1230px;
     margin: 0 auto auto;
     flex-grow: 1;
 }
@@ -103,8 +103,10 @@ ul {
 /*footer*/
 
 .main-footer {
-    margin: 65px 0 0;
+    margin: 65px auto 0;
     background: #F3F3F3;
+    max-width: none;
+    width: 100%;
 }
 
 .main-footer-container {

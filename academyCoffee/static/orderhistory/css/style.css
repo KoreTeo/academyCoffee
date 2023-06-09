@@ -20,12 +20,14 @@
 .main-container{
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
 }
 
 .personal-account-left-container {
     width: 255px;
     display: flex;
     flex-direction: column;
+    margin-right: 89px;
 }
 
 .personal-avatar {
@@ -61,5 +63,65 @@
 }
 
 .order-history-right-container {
-    height: 1234px;
+    margin-top: 20px;
+}
+
+.months-list {
+    display: flex;
+    gap: 110px
+}
+
+.months-list-item {
+    width: 386px;
+}
+
+.months-list-item h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 30px;
+}
+
+.low-opacity-text {
+    color: #CACACA;
+}
+
+.order-list-item-container {
+    display: flex;
+}
+
+.status-image {
+    margin: 0 16px 0 10px;
+}
+
+.order-list-item-middle-container {
+    margin-right: 69px;
+}
+
+.status-text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.order-date {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.total-price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.order-list-line {
+    width: 386px;
+    border-bottom: 1px solid #CACACA;
+    margin: 30px 0;
 }
