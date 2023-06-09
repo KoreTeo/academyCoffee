@@ -73,6 +73,42 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserProfileForm(UserChangeForm):
+    regions = [
+        ('Красноярск', 'Красноярск'),
+        ('Москва', 'Москва'),
+        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Новосибирск', 'Новосибирск'),
+    ]
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+    }))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+    }))
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+        'readonly': True
+    }))
+    email = forms.CharField(widget=forms.EmailInput(attrs={
+        'class': 'form-control py-4',
+        'readonly': True
+    }))
+    # region = forms.CharField(widget=forms.Select(attrs={
+    #     'id': 'regions',
+    #     'class': 'form-control py-4 form-control-lg  select',
+    # }, choices=regions))
+    region = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+    }))
+    PNumber = forms.CharField(widget=forms.NumberInput(attrs={
+        'class': 'form-control py-4',
+    }))
+    DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
+        'class': 'form-control py-4 datetimepicker-input',
+        'data-target': '#datetimepicker1',
+
+    }))
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username',

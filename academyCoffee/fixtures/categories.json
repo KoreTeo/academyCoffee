@@ -1,1 +1,43 @@
-[{"model": "academyCoffee.productcategory", "pk": 1, "fields": {"name": "—≈«ŒÕÕ€≈ Õ¿œ»“ »"}}, {"model": "academyCoffee.productcategory", "pk": 2, "fields": {"name": "√Œ–ﬂ◊»≈ Õ¿œ»“ »"}}, {"model": "academyCoffee.productcategory", "pk": 3, "fields": {"name": "’ŒÀŒƒÕ€≈ Õ¿œ»“ »"}}, {"model": "academyCoffee.productcategory", "pk": 4, "fields": {"name": "¿¬“Œ–— »≈ Õ¿œ»“ »"}}, {"model": "academyCoffee.productcategory", "pk": 5, "fields": {"name": "   Œ‘≈"}}, {"model": "academyCoffee.productcategory", "pk": 6, "fields": {"name": "Õ¿ÿ¿  ”’Õﬂ"}}]
+[
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "—≈«ŒÕÕ€≈ Õ¿œ»“ »"
+    }
+  },
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "√Œ–ﬂ◊»≈ Õ¿œ»“ »"
+    }
+  },
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "’ŒÀŒƒÕ€≈ Õ¿œ»“ »"
+    }
+  },
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "¿¬“Œ–— »≈ Õ¿œ»“ »"
+    }
+  },
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "   Œ‘≈"
+    }
+  },
+  {
+    "model": "academyCoffee.productcategory",
+    "pk": 6,
+    "fields": {
+      "name": "Õ¿ÿ¿  ”’Õﬂ"}
+  }
+]

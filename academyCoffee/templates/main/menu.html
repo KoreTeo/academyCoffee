@@ -6,206 +6,234 @@
 {% endblock %}
 
 {% block content %}
-  <main class="main">
-    <nav class="main-nav-bar">
-      <ul class="first-row-category">
-        <li>
-          <a href="#cold-drinks"><div class="first-item" style="background: url({% static 'menu/img/холодные_напитки.png' %})">ХОЛОДНЫЕ НАПИТКИ</div></a>
-        </li>
-        <li>
-          <a href="#author-drinks"><div class="second-item" style="background: url({% static 'menu/img/авторские_напитки.png' %})">АВТОРСКИЕ НАПИТКИ</div></a>
-        </li>
-        <li>
-          <a href="#hot-drinks"><div class="third-item" style="background: url({% static 'menu/img/горячие_напитки.png' %})">ГОРЯЧИЕ НАПИТКИ</div></a>
-        </li>
-      </ul>
-      <ul class="second-row-category">
-        <li>
-          <a href="#seasonal-drinks"><div class="fourth-item" style="background: url({% static 'menu/img/сезонные_напитки.png' %})">СЕЗОННЫЕ НАПИТКИ</div></a>
-        </li>
-      </ul>
-      <ul class="third-row-category">
-        <li>
-          <a href="#to-coffee"><div class="fifth-item" style="background: url({% static 'menu/img/к_кофе.png' %})">К КОФЕ</div></a>
-        </li>
-        <li>
-          <a href="#our-kitchen"><div class="sixth-item" style="background: url({% static 'menu/img/наша_кухня.png' %})">НАША КУХНЯ</div></a>
-        </li>
-      </ul>
-    </nav>
-    <section id="seasonal-drinks">
-      <h2>СЕЗОННЫЕ НАПИТКИ</h2>
-      <ul class="drinks-list">
-          {% for product in productsWithCategory1 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+    <main class="main">
+        <nav class="main-nav-bar">
+            <ul class="first-row-category">
+                <li>
+                    <a href="#cold-drinks">
+                        <div class="first-item" style="background: url({% static 'menu/img/холодные_напитки.png' %})">
+                            ХОЛОДНЫЕ НАПИТКИ
+                        </div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-    <section id="hot-drinks">
-      <h2>ГОРЯЧИЕ НАПИТКИ</h2>
-      <ul class="drinks-list">
-          {% for product in productsWithCategory2 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+                <li>
+                    <a href="#author-drinks">
+                        <div class="second-item" style="background: url({% static 'menu/img/авторские_напитки.png' %})">
+                            АВТОРСКИЕ НАПИТКИ
+                        </div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-    <section id="cold-drinks">
-      <h2>ХОЛОДНЫЕ НАПИТКИ</h2>
-      <ul class="drinks-list">
-          {% for product in productsWithCategory3 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+                <li>
+                    <a href="#hot-drinks">
+                        <div class="third-item" style="background: url({% static 'menu/img/горячие_напитки.png' %})">
+                            ГОРЯЧИЕ НАПИТКИ
+                        </div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-    <section id="author-drinks">
-      <h2>АВТОРСКИЕ НАПИТКИ</h2>
-      <ul class="drinks-list">
-          {% for product in productsWithCategory4 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+            </ul>
+            <ul class="second-row-category">
+                <li>
+                    <a href="#seasonal-drinks">
+                        <div class="fourth-item" style="background: url({% static 'menu/img/сезонные_напитки.png' %})">
+                            СЕЗОННЫЕ НАПИТКИ
+                        </div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-    <section id="to-coffee">
-      <h2>К КОФЕ</h2>
-        <ul class="drinks-list">
-          {% for product in productsWithCategory5 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+            </ul>
+            <ul class="third-row-category">
+                <li>
+                    <a href="#to-coffee">
+                        <div class="fifth-item" style="background: url({% static 'menu/img/к_кофе.png' %})">К КОФЕ</div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-    <section id="our-kitchen">
-      <h2>НАША КУХНЯ</h2>
-      <ul class="drinks-list">
-          {% for product in productsWithCategory6 %}
-                <li class="drinks-list-item">
-                  <div class="container-images">
-                    <div class="star-counter">
-                      <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
-                      <p class="star-number">
-                          {{ product.stars }}
-                      </p>
-                    </div>
-                    <img src="{{ product.image.url }}" width="93" height="166">
-                  </div>
-                  <h3>
-                    {{ product.name }}
-                  </h3>
-                  <div class="price-container">
-                    <p class="price">
-                      {{ product.price }} рублей
-                    </p>
-                    <button class="button-to-cart">
-                      Добавить в корзину
-                    </button>
-                  </div>
+                <li>
+                    <a href="#our-kitchen">
+                        <div class="sixth-item" style="background: url({% static 'menu/img/наша_кухня.png' %})">НАША
+                            КУХНЯ
+                        </div>
+                    </a>
                 </li>
-          {% endfor %}
-      </ul>
-    </section>
-  </main>
+            </ul>
+        </nav>
+        <section id="seasonal-drinks">
+            <h2>СЕЗОННЫЕ НАПИТКИ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory1 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="hot-drinks">
+            <h2>ГОРЯЧИЕ НАПИТКИ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory2 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="cold-drinks">
+            <h2>ХОЛОДНЫЕ НАПИТКИ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory3 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="author-drinks">
+            <h2>АВТОРСКИЕ НАПИТКИ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory4 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="to-coffee">
+            <h2>К КОФЕ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory5 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="our-kitchen">
+            <h2>НАША КУХНЯ</h2>
+            <ul class="drinks-list">
+                {% for product in productsWithCategory6 %}
+                    <li class="drinks-list-item">
+                        <div class="container-images">
+                            <div class="star-counter">
+                                <img src="{% static 'menu/img/star.png' %}" width="24" height="24" alt="Звезда">
+                                <p class="star-number">
+                                    {{ product.stars }}
+                                </p>
+                            </div>
+                            <img src="{{ product.image.url }}" width="93" height="166">
+                        </div>
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+                        <div class="price-container">
+                            <p class="price">
+                                {{ product.price }} рублей
+                            </p>
+                            <button class="button-to-cart">
+                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
+                                    корзину</a>
+                            </button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 {% endblock %}

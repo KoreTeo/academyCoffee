@@ -28,7 +28,7 @@
             </div>
             <div class="container-right">
                 <a class="nav-bar-item cart" href="{% url 'cart' %}">Корзина</a>
-                <a class="nav-bar-item" href="{% url 'profile' %}">
+                <a class="nav-bar-item" href="{% if user.is_authenticated %} {% url 'profile' %} {% else %} {% url 'login' %} {% endif %}">
                     <img src="{% static 'base/img/personal_account.svg' %}" width="33" height="33" alt="Личный кабинет">
                 </a>
             </div>

@@ -8,86 +8,76 @@
 {% block content %}
     <main class="main">
         <div class="main-container">
-            <div class="cart-content-container">
-                <div class="cart-titles-container">
-                    <p class="cart-title">
-                        Товар
-                    </p>
-                    <p class="cart-title">
-                        Цена
-                    </p>
+            {% if baskets %}
+                <div class="cart-content-container">
+                    <div class="cart-titles-container">
+                        <p class="cart-title">
+                            Товар
+                        </p>
+                        <p class="cart-title">
+                            Цена
+                        </p>
+                    </div>
+                    <div class="cart-line"></div>
+                    <ul class="cart-list">
+                        {% for basket in baskets %}
+                            <li class="cart-list-item">
+                                <div class="cart-list-item-container">
+                                    <div class="item-description">
+                                        <img src="{{ basket.product.image.url }}" alt="{{ basket.product.name }}"
+                                             width="100" height="100">
+                                        <div class="item-description-text">
+                                            <h3>{{ basket.product.name }}</h3>
+                                            <ul class="additives-list">
+                                                <li class="additives-list-item">
+
+                                                </li>
+                                                <li class="additives-list-item">
+
+                                                </li>
+                                                <li class="additives-list-item">
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="item-price">
+                                        <p class="price">{{ basket.sum }} руб.</p>
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">+</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="cart-line"></div>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <div class="cart-line"></div>
-                <ul class="cart-list">
-                    <li class="cart-list-item">
-                        <div class="cart-list-item-container">
-                            <div class="item-description">
-                                <img src="{% static 'cart/img/latte.png' %}" alt="Латте" width="100" height="100">
-                                <div class="item-description-text">
-                                    <h3>Латте</h3>
-                                    <ul class="additives-list">
-                                        <li class="additives-list-item">
-                                            Молоко: кокосовое
-                                        </li>
-                                        <li class="additives-list-item">
-                                            Добавки: нет
-                                        </li>
-                                        <li class="additives-list-item">
-                                            Объем: 250 мл
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item-price">
-                                <p class="price">150 руб.</p>
-                                <div class="amount-button">
-                                    <button>-</button>
-                                    <p>1</p>
-                                    <button>+</button>
-                                </div>
+            {% else %}
+                <div class="cart-content-container">
+                    <div class="cart-titles-container">
+                        <p class="cart-title">
+                            Корзина пуста :(
+                        </p>
 
-                            </div>
-                        </div>
-                        <div class="cart-line"></div>
-                    </li>
-                    <li class="cart-list-item">
-                        <div class="cart-list-item-container">
-                            <div class="item-description">
-                                <img src="{% static 'cart/img/latte.png' %}" alt="Латте" width="100" height="100">
-                                <div class="item-description-text">
-                                    <h3>Латте</h3>
-                                    <ul class="additives-list">
-                                        <li class="additives-list-item">
-                                            Молоко: кокосовое
-                                        </li>
-                                        <li class="additives-list-item">
-                                            Добавки: нет
-                                        </li>
-                                        <li class="additives-list-item">
-                                            Объем: 250 мл
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item-price">
-                                <p class="price">150 руб.</p>
-                                <div class="amount-button">
-                                    <button>-</button>
-                                    <p>1</p>
-                                    <button>+</button>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="cart-line"></div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                    <div class="cart-line"></div>
+                    <ul class="cart-list">
+                    </ul>
+                </div>
+            {% endif %}
             <div class="payment-container">
                 <div class="payment-method">
                     <h3>Способ оплаты</h3>
                     <div class="chosen-method">
-                        <img class="chosen-method-image" src="{% static 'cart/img/mastercard.png' %}" alt="MasterCard" width="47" height="28">
+                        <img class="chosen-method-image" src="{% static 'cart/img/mastercard.png' %}" alt="MasterCard"
+                             width="47" height="28">
                         <p>***1234</p>
                         <button>Изменить</button>
                     </div>
@@ -102,7 +92,7 @@
                             Стоимость товаров
                         </p>
                         <p>
-                            380 руб.
+                            {{ baskets.total_sum }} руб.
                         </p>
                     </div>
                     <div class="promo-code">
@@ -113,13 +103,14 @@
                             <label>
                                 <input class="promo-code-input" rel="">
                                 <button class="promo-code-button" rel="submit">
-                                    <img src="{% static 'cart/img/check_mark.png' %}" width="18" height="13" alt="Применить">
+                                    <img src="{% static 'cart/img/check_mark.png' %}" width="18" height="13"
+                                         alt="Применить">
                                 </button>
                             </label>
                         </div>
                     </div>
                     <div class="total-line-last"></div>
-                    <p id="final-price">380 руб.</p>
+                    <p id="final-price">{{ baskets.total_sum }} руб.</p>
                 </div>
             </div>
         </div>
