@@ -24,7 +24,7 @@ class UserRegistrationForm(UserCreationForm):
     regions = [
         ('Красноярск', 'Красноярск'),
         ('Москва', 'Москва'),
-        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Санкт-Петербург', 'Санкт-Петербург'),
         ('Новосибирск', 'Новосибирск'),
     ]
     first_name = forms.CharField(widget=forms.TextInput(attrs={
@@ -76,7 +76,7 @@ class UserProfileForm(UserChangeForm):
     regions = [
         ('Красноярск', 'Красноярск'),
         ('Москва', 'Москва'),
-        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Санкт-Петербург', 'Санкт-Петербург'),
         ('Новосибирск', 'Новосибирск'),
     ]
     first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={
