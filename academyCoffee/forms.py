@@ -79,46 +79,22 @@ class UserProfileForm(UserChangeForm):
         ('Санкт-Петерург', 'Санкт-Петерург'),
         ('Новосибирск', 'Новосибирск'),
     ]
-    first_name = forms.CharField(widget=forms.TextInput(attrs={
+    first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={
         'class': 'change-name-form',
-        'required': False
     }))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4',
-        'required': False
-    }))
-    username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4',
-        'readonly': True,
-        'required': False
-    }))
-    email = forms.CharField(widget=forms.EmailInput(attrs={
-        'class': 'form-control py-4',
-        'readonly': True,
-        'required': False
-    }))
-    # region = forms.CharField(widget=forms.Select(attrs={
-    #     'id': 'regions',
-    #     'class': 'form-control py-4 form-control-lg  select',
-    # }, choices=regions))
-    region = forms.CharField(widget=forms.Select(attrs={
+    region = forms.CharField(required=False, widget=forms.Select(attrs={
         'id': 'regions',
         'class': 'change-region-select',
         'placeholder': 'Выберите город',
-        'required': False
     }, choices=regions))
-    PNumber = forms.CharField(widget=forms.NumberInput(attrs={
+    PNumber = forms.CharField(required=False, widget=forms.NumberInput(attrs={
         'class': 'change-number-form',
-        'required': False
     }))
-    DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
+    DateOfBirth = forms.DateField(required=False, widget=forms.DateInput(attrs={
         'class': 'change-date-form datetimepicker-input',
         'data-target': '#datetimepicker1',
-        'required': False
-
     }))
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username',
-                  'email', 'region', 'PNumber', 'DateOfBirth')
+        fields = ('first_name', 'region', 'PNumber', 'DateOfBirth')

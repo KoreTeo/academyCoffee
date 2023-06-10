@@ -51,6 +51,11 @@
                                     {% csrf_token %}
                                     <label for="{{ form.first_name.id_for_label }}">
                                         {{ form.first_name }}
+                                        <div hidden="hidden">
+                                            {{ form.DateOfBirth }}
+                                            {{ form.PNumber }}
+                                            {{ form.region }}
+                                        </div>
                                         <button id="button-change-name-submit" type="submit">Изменить</button>
                                     </label>
                                 </form>
@@ -76,6 +81,11 @@
                                     {% csrf_token %}
                                     <label for="{{ form.DateOfBirth.id_for_label }}">
                                         {{ form.DateOfBirth }}
+                                        <div hidden="hidden">
+                                            {{ form.first_name }}
+                                            {{ form.PNumber }}
+                                            {{ form.region }}
+                                        </div>
                                         <button id="button-change-name-submit" type="submit">Изменить</button>
                                     </label>
                                 </form>
@@ -102,6 +112,11 @@
                                     {% csrf_token %}
                                     <label for="{{ form.region.id_for_label }}">
                                         {{ form.region }}
+                                        <div hidden="hidden">
+                                            {{ form.first_name }}
+                                            {{ form.PNumber }}
+                                            {{ form.DateOfBirth }}
+                                        </div>
                                         <button id="button-change-name-submit" type="submit">Изменить</button>
                                     </label>
                                 </form>
@@ -127,6 +142,11 @@
                                     {% csrf_token %}
                                     <label for="{{ form.PNumber.id_for_label }}">
                                         {{ form.PNumber }}
+                                        <div hidden="hidden">
+                                            {{ form.first_name }}
+                                            {{ form.region }}
+                                            {{ form.DateOfBirth }}
+                                        </div>
                                         <button id="button-change-name-submit" type="submit">Изменить</button>
                                     </label>
                                 </form>

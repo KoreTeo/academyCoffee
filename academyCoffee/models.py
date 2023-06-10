@@ -37,7 +37,7 @@ class User(AbstractUser):
         ('Новосибирск', 'Новосибирск'),
     ]
     region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
-    PNumber = models.PositiveIntegerField('Номер телефона')
+    PNumber = models.PositiveIntegerField('Номер телефона', blank=True, null=True)
     DateOfBirth = models.DateField("День рождения", default=timezone.now)
 
 

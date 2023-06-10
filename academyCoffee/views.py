@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def cart(request):
     context = {
         'title': "Корзина",
@@ -138,3 +138,4 @@ def basket_remove(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
     return redirect(request.META['HTTP_REFERER'])
+
