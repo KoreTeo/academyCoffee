@@ -40,7 +40,20 @@
                 <div class="change-up-container">
                     <div class="change-up-container-title">
                         <h3 class="change-title">Имя</h3>
-                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                        <button id="modalChangeName"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
+                        <div class="modal-change-name">
+                            <div class="modal-change-name-content">
+                                <a class="close-modal-name"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                <p class="modal-change-name-title">Изменить имя</p>
+                                <p class="modal-change-name-hint">Имя Фамилия</p>
+                                <form action="">
+                                    <label>
+                                        <input class="change-name-form">
+                                        <button id="button-change-name-submit" type="submit">Изменить</button>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <img class="description-image" src="{% static 'personalaccount/img/account.png' %}">
                 </div>
@@ -51,7 +64,20 @@
                 <div class="change-up-container">
                     <div class="change-up-container-title">
                         <h3 class="change-title">Дата рождения</h3>
-                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                        <button id="modalChangeDate"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
+                        <div class="modal-change-date">
+                            <div class="modal-change-date-content">
+                                <a class="close-modal-date"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                <p class="modal-change-date-title">Изменить дату рождения</p>
+                                <p class="modal-change-date-hint">ДД.ММ.ГГ</p>
+                                <form action="">
+                                    <label>
+                                        <input class="change-date-form">
+                                        <button id="button-change-date-submit" type="submit">Изменить</button>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <img class="description-image" src="{% static 'personalaccount/img/calendar.png' %}">
                 </div>
@@ -62,7 +88,23 @@
                 <div class="change-up-container">
                     <div class="change-up-container-title">
                         <h3 class="change-title">Регион</h3>
-                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                        <button id="modalChangeRegion"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
+                        <div class="modal-change-region">
+                            <div class="modal-change-region-content">
+                                <a class="close-modal-region"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                <p class="modal-change-region-title">Изменить регион</p>
+                                <p class="modal-change-region-hint">Регион</p>
+                                <form action="">
+                                    <label>
+                                        <select class="change-region-select">
+                                            <option>г. Красноярск</option>
+                                            <option>г. Новосибирск</option>
+                                        </select>
+                                        <button id="button-change-region-submit" type="submit">Изменить</button>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <img class="description-image" src="{% static 'personalaccount/img/planet.png' %}">
                 </div>
@@ -73,7 +115,20 @@
                 <div class="change-up-container">
                     <div class="change-up-container-title">
                         <h3 class="change-title">Телефон</h3>
-                        <a><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></a>
+                        <button id="modalChangeNumber"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
+                        <div class="modal-change-number">
+                            <div class="modal-change-number-content">
+                                <a class="close-modal-number"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                <p class="modal-change-number-title">Изменить номер телефона</p>
+                                <p class="modal-change-number-hint">+7(908)232-31-45</p>
+                                <form action="">
+                                    <label>
+                                        <input class="change-number-form">
+                                        <button id="button-change-number-submit" type="submit">Изменить</button>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <img class="description-image" src="{% static 'personalaccount/img/messages.png' %}">
                 </div>
@@ -145,4 +200,5 @@
     </div>
 </div>
 </main>
+    <script src="{% static 'personalaccount/js/script.js' %}"></script>
 {% endblock %}

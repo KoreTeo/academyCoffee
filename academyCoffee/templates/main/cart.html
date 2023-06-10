@@ -45,7 +45,7 @@
                                         <p class="price">{{ basket.sum }} руб.</p>
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">+</a>
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
