@@ -14,8 +14,8 @@
     <div class="personal-line"></div>
 <div class="main-container">
     <div class="personal-account-left-container">
-        <img class="personal-avatar" src="{{ personalaccount.image.url }}" width="120" height="120">
-        <p class="personal-name">{{ personalaccount.name }}Филипчук Филипп</p>
+        <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112" height="112">
+        <p class="personal-name">{{ personalaccount.name }}</p>
         <ul class="personal-account-nav-list">
             <li class="personal-account-nav-list-item">
                 <a class="personal-account-nav-link">
@@ -45,7 +45,7 @@
                             <div class="modal-change-name-content">
                                 <a class="close-modal-name"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-name-title">Изменить имя</p>
-                                <p class="modal-change-name-hint">Имя Фамилия</p>
+                                <p class="modal-change-name-hint">Имя</p>
                                 <form action="">
                                     <label>
                                         <input class="change-name-form">
@@ -58,7 +58,7 @@
                     <img class="description-image" src="{% static 'personalaccount/img/account.png' %}">
                 </div>
                 <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-name">Имя Фамилия</p>
+                <p class="personal-account-info-name">Имя</p>
             </div>
             <div class="change-container">
                 <div class="change-up-container">
