@@ -41,7 +41,7 @@ def profile(request):
         'user': request.user
 
     }
-    return render(request, 'users/profile.html', context)
+    return render(request, 'main/personalaccount.html', context)
 
 
 def profile2(request):

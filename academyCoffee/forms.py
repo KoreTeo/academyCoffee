@@ -80,7 +80,7 @@ class UserProfileForm(UserChangeForm):
         ('Новосибирск', 'Новосибирск'),
     ]
     first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4',
+        'class': 'change-name-form',
     }))
     last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4',
@@ -97,14 +97,16 @@ class UserProfileForm(UserChangeForm):
     #     'id': 'regions',
     #     'class': 'form-control py-4 form-control-lg  select',
     # }, choices=regions))
-    region = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4',
-    }))
+    region = forms.CharField(widget=forms.Select(attrs={
+        'id': 'regions',
+        'class': 'change-region-select',
+        'placeholder': 'Выберите город'
+    }, choices=regions))
     PNumber = forms.CharField(widget=forms.NumberInput(attrs={
-        'class': 'form-control py-4',
+        'class': 'change-number-form',
     }))
     DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
-        'class': 'form-control py-4 datetimepicker-input',
+        'class': 'change-date-form datetimepicker-input',
         'data-target': '#datetimepicker1',
 
     }))
