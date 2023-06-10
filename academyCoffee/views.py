@@ -44,29 +44,6 @@ def profile(request):
     return render(request, 'main/personalaccount.html', context)
 
 
-def profile2(request):
-    return render(request, 'main/personalaccount.html', {'title': "Личный кабинет"})
-
-
-# def login(request):
-#     if request.method == 'POST':
-#         form = UserLoginForm(data=request.POST)
-#         if form.is_valid():
-#             username = request.POST['username']
-#             password = request.POST['password']
-#             user = auth.authenticate(username=username, password=password)
-#             if user:
-#                 auth.login(request, user)
-#                 return redirect(reverse('home'))
-#     else:
-#         form = UserLoginForm()
-#     context = {
-#         'form': form,
-#         'title': "Авторизация"
-#     }
-#     return render(request, 'users/login.html', context)
-
-
 def logout(request):
     auth.logout(request)
     return redirect(reverse('home'))
