@@ -15,11 +15,17 @@ def cart(request):
 
 
 def index(request):
-    return render(request, 'main/index.html', {'title': "Академия кофе"})
+    context = {
+        'title': "Академия кофе"
+    }
+    return render(request, 'main/index.html', context)
 
 
 def about(request):
-    return render(request, 'main/about.html', {'title': "О нас"})
+    context = {
+        'title': "О нас"
+    }
+    return render(request, 'main/about.html', context)
 
 
 @login_required
@@ -43,7 +49,7 @@ def profile(request):
     }
     return render(request, 'main/personalaccount.html', context)
 
-
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect(reverse('home'))
@@ -64,25 +70,30 @@ def registration(request):
     }
     return render(request, 'users/register.html', context)
 
-
+@login_required
 def orderhistory(request):
     return render(request, 'main/orderhistory.html', {'title': "История заказов"})
 
 
 def stocks(request):
-    return render(request, 'main/stocks.html', {'title': "Акции"})
+    context = {
+        'title': "Акции"
+    }
+    return render(request, 'main/stocks.html', context)
 
 
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
-            username = request.POST['username']
+            email = form.cleaned_data.get('email')
             password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
+            user = auth.authenticate(email=email, password=password)
             if user:
                 auth.login(request, user)
                 return redirect(reverse('home'))
+        else:
+            print(form.errors)
     else:
         form = UserLoginForm()
     context = {

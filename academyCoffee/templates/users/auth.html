@@ -16,12 +16,12 @@
     <div class="main-container">
 
         <div class="up-container">
-            <h2>Войти</h2>
+            <h2>Вход</h2>
             <a href="{% url 'home' %}" class="return"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
         </div>
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
-            <label for="{{ form.username.id_for_label }}">Телефон или почта</label>
+            <label for="{{ form.username.id_for_label }}">Номер телефона</label>
             {{ form.username }}
             <label for="{{ form.password.id_for_label }}">
                 Пароль

@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta lang="ru">
-    <meta name="keywords" content="Академия Кофе, кофейня" />
-    <meta name="description" content="Академия Кофе" />
+    <meta name="keywords" content="Академия Кофе, кофейня"/>
+    <meta name="description" content="Академия Кофе"/>
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     <link rel="icon" href="{% static 'base/img/akademiacoffee-favicon.png' %}">
     <title>{{ title }}</title>
@@ -14,58 +14,67 @@
     {% endblock %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="nav-bar">
-            <a href="{% url 'home' %}"><img class="nav-bar-item logo" src="{% static 'base/img/logo.svg' %}" width="200" height="33"
-                                            alt="Логотип"></a>
-            <div class="container-middle">
-                <a class="nav-bar-item" href="{% url 'menu' %}">Меню</a>
-                <a class="nav-bar-item" href="{% url 'about' %}">О нас</a>
-                <a class="nav-bar-item" href="{% url 'stocks' %}">Акции</a>
-            </div>
+<header class="main-header">
+    <nav class="nav-bar">
+        <a href="{% url 'home' %}"><img class="nav-bar-item logo" src="{% static 'base/img/logo.svg' %}" width="200"
+                                        height="33"
+                                        alt="Логотип"></a>
+        <div class="container-middle">
+            <a class="nav-bar-item" href="{% url 'menu' %}">Меню</a>
+            <a class="nav-bar-item" href="{% url 'about' %}">О нас</a>
+            <a class="nav-bar-item" href="{% url 'stocks' %}">Акции</a>
+        </div>
+        {% if user.is_authenticated %}
             <div class="container-right">
                 <a class="nav-bar-item cart" href="{% url 'cart' %}">Корзина</a>
-                <a class="nav-bar-item" href="{% if user.is_authenticated %} {% url 'profile' %} {% else %} {% url 'login' %} {% endif %}">
+                <a class="nav-bar-item" href="{% url 'profile' %}">
                     <img src="{% static 'base/img/personal_account.svg' %}" width="33" height="33" alt="Личный кабинет">
                 </a>
             </div>
-        </nav>
-    </header>
-    {% block content %}
-    {% endblock %}
-    <footer class="main-footer">
+        {% else %}
+            <div class="container-right">
+                <a class="nav-bar-item cart" href="{% url 'login' %}">Войти</a>
+            </div>
+        {% endif %}
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+<footer class="main-footer">
     <div class="main-footer-container">
-      <a href="{% url 'home' %}"><img class="bottom-logo" src="{% static 'base/img/bottom_logo.svg' %}" width="74" height="74" alt="Логотип"></a>
-      <ul class="main-footer-nav">
-        <li>
-          <a href="{% url 'menu' %}" class="main-footer-link">Меню</a>
-        </li>
-        <li>
-          <a href="{% url 'about' %}" class="main-footer-link">О нас</a>
-        </li>
-        <li>
-          <a href="#" class="main-footer-link">Контакты</a>
-        </li>
-        <li>
-          <a href="#" class="main-footer-link">Адреса</a>
-        </li>
-      </ul>
-      <ul class="socials-list">
-        <li>
-          <a href="#"><img src="{% static 'base/img/telegram.svg' %}" width="31" height="28" alt="Телеграм"></a>
-        </li>
-        <li>
-          <a href="#"><img src="{% static 'base/img/vk.svg' %}" width="30" height="28" alt="VK"></a>
-        </li>
-      </ul>
-      <div class="contacts">
-        <a href="tel:+78000000000">8(800)000-00-00</a>
-        <a href="mailto:nazvaniecofeyni@yandex.ru">nazvaniecofeyni@yandex.ru</a>
-      </div>
+        <a href="{% url 'home' %}"><img class="bottom-logo" src="{% static 'base/img/bottom_logo.svg' %}" width="74"
+                                        height="74" alt="Логотип"></a>
+        <ul class="main-footer-nav">
+            <li>
+                <a href="{% url 'menu' %}" class="main-footer-link">Меню</a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="main-footer-link">О нас</a>
+            </li>
+            <li>
+                <a href="#" class="main-footer-link">Контакты</a>
+            </li>
+            <li>
+                <a href="#" class="main-footer-link">Адреса</a>
+            </li>
+        </ul>
+        <ul class="socials-list">
+            <li>
+                <a href="#"><img src="{% static 'base/img/telegram.svg' %}" width="31" height="28" alt="Телеграм"></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'base/img/vk.svg' %}" width="30" height="28" alt="VK"></a>
+            </li>
+        </ul>
+        <div class="contacts">
+            <a href="tel:+78000000000">8(800)000-00-00</a>
+            <a href="mailto:nazvaniecofeyni@yandex.ru">nazvaniecofeyni@yandex.ru</a>
+        </div>
     </div>
-  </footer>
+</footer>
 </body>
 </html>

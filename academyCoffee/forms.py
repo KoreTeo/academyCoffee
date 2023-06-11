@@ -3,21 +3,23 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.forms import ModelForm, TextInput, Textarea
 from academyCoffee.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class UserLoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4',
-        'placeholder': 'Телефон или почта',
-    }))
+    # PNumber = PhoneNumberField()
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control py-4',
         'placeholder': 'Введите пароль'
     }))
+    email = forms.CharField(widget=forms.EmailInput(attrs={
+        'class': 'form-control py-4',
+        'placeholder': 'Введите адрес эл. почты',
+    }))
 
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('email', 'password')
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -48,10 +50,7 @@ class UserRegistrationForm(UserCreationForm):
         'class': 'form-control form-control-lg  select',
         'placeholder': 'Выберите город'
     }, choices=regions))
-    PNumber = forms.CharField(widget=forms.NumberInput(attrs={
-        'class': 'form-control py-4',
-        'placeholder': 'Введите номер телефона'
-    }))
+    PNumber = PhoneNumberField(region="RU")
     DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control datetimepicker-input',
         'data-target': '#datetimepicker1',
@@ -66,6 +65,10 @@ class UserRegistrationForm(UserCreationForm):
         'placeholder': 'Подтвердите пароль'
     }))
 
+    def __init__(self, *args, **kwargs):
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['PNumber'].widget.attrs.update({'class': 'form-control py-4'})
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username',
@@ -79,21 +82,23 @@ class UserProfileForm(UserChangeForm):
         ('Санкт-Петербург', 'Санкт-Петербург'),
         ('Новосибирск', 'Новосибирск'),
     ]
-    first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'change-name-form',
     }))
-    region = forms.CharField(required=False, widget=forms.Select(attrs={
+    region = forms.CharField(widget=forms.Select(attrs={
         'id': 'regions',
         'class': 'change-region-select',
         'placeholder': 'Выберите город',
     }, choices=regions))
-    PNumber = forms.CharField(required=False, widget=forms.NumberInput(attrs={
-        'class': 'change-number-form',
-    }))
-    DateOfBirth = forms.DateField(required=False, widget=forms.DateInput(attrs={
+    PNumber = PhoneNumberField()
+    DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'change-date-form datetimepicker-input',
         'data-target': '#datetimepicker1',
     }))
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        self.fields['PNumber'].widget.attrs.update({'class': 'change-number-form'})
 
     class Meta:
         model = User

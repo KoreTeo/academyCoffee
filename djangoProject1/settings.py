@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'academyCoffee.apps.AcademycoffeeConfig',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'academyCoffee.User'
 LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'

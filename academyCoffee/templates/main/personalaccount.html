@@ -137,7 +137,7 @@
                             <div class="modal-change-number-content">
                                 <a class="close-modal-number"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-number-title">Изменить номер телефона</p>
-                                <p class="modal-change-number-hint">+7(908)232-31-45</p>
+                                <p class="modal-change-number-hint">+7xxxxxxxxxx</p>
                                 <form action="{% url 'profile' %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.PNumber.id_for_label }}">
@@ -156,7 +156,7 @@
                     <img class="description-image" src="{% static 'personalaccount/img/messages.png' %}">
                 </div>
                 <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-number">{{ user.PNumber }}</p>
+                <p class="personal-account-info-number">{{ user.PNumber.as_national }}</p>
             </div>
         </section>
         <section class="payment-methods">

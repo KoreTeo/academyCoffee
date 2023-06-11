@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.phonenumber import PhoneNumber
 
 
 class ProductCategory(models.Model):
@@ -37,8 +39,13 @@ class User(AbstractUser):
         ('Новосибирск', 'Новосибирск'),
     ]
     region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
-    PNumber = models.PositiveIntegerField('Номер телефона', blank=True, null=True)
+    PNumber = PhoneNumberField('Номер телефона', blank=False, null=False, unique=True, region='RU')
     DateOfBirth = models.DateField("День рождения", default=timezone.now)
+    USERNAME_FIELD = "PNumber"
+    REQUIRED_FIELDS = ["email"]
+
+    def __str__(self):
+        return f'Имя: {self.first_name} | Email: {self.email} | Номер телефона: {str(self.PNumber)}'
 
 
 class BasketQuerySet(models.QuerySet):
@@ -62,5 +69,3 @@ class Basket(models.Model):
 
     def sum(self):
         return self.product.price * self.quantity
-
-
