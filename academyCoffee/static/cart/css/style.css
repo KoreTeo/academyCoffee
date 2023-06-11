@@ -201,3 +201,18 @@
     line-height: 24px;
     text-align: right;
 }
+
+.make-order {
+    margin-top: 30px;
+    display: block;
+    background: rgba(72, 212, 196, 0.29);
+    border-radius: 19px;
+    width: 327px;
+    height: 37px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+}
