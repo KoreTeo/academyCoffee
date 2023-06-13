@@ -47,7 +47,7 @@
                                 <a class="close-modal-name"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-name-title">Изменить имя</p>
                                 <p class="modal-change-name-hint">Имя</p>
-                                <form action="{% url 'profile' %}" method="post">
+                                <form action="{% url 'profile' user.id %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.first_name.id_for_label }}">
                                         {{ form.first_name }}
@@ -77,7 +77,7 @@
                                 <a class="close-modal-date"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-date-title">Изменить дату рождения</p>
                                 <p class="modal-change-date-hint">ДД.ММ.ГГ</p>
-                                <form action="{% url 'profile' %}" method="post">
+                                <form action="{% url 'profile' user.id %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.DateOfBirth.id_for_label }}">
                                         {{ form.DateOfBirth }}
@@ -108,7 +108,7 @@
                                 <p class="modal-change-region-title">Изменить регион</p>
                                 <p class="modal-change-region-hint">Регион</p>
 
-                                <form action="{% url 'profile' %}" method="post">
+                                <form action="{% url 'profile' user.id %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.region.id_for_label }}">
                                         {{ form.region }}
@@ -138,7 +138,7 @@
                                 <a class="close-modal-number"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-number-title">Изменить номер телефона</p>
                                 <p class="modal-change-number-hint">+7xxxxxxxxxx</p>
-                                <form action="{% url 'profile' %}" method="post">
+                                <form action="{% url 'profile' user.id %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.PNumber.id_for_label }}">
                                         {{ form.PNumber }}

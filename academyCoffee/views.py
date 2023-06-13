@@ -1,9 +1,17 @@
-from .models import ProductCategory, Product, Basket, User
-from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from django.contrib import auth, messages
-from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect, render
+from django.urls import reverse, reverse_lazy
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView, UpdateView
+
+from academyCoffee.common.views import TitleMixin
+
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
+from .models import Basket, Product, User
+
 
 @login_required
 def cart(request):
@@ -14,11 +22,9 @@ def cart(request):
     return render(request, 'main/cart.html', context)
 
 
-def index(request):
-    context = {
-        'title': "Академия кофе"
-    }
-    return render(request, 'main/index.html', context)
+class IndexView(TitleMixin, TemplateView):
+    template_name = 'main/index.html'
+    title = 'Академия кофе'
 
 
 def about(request):
@@ -28,47 +34,29 @@ def about(request):
     return render(request, 'main/about.html', context)
 
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        form = UserProfileForm(instance=request.user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('profile'))
-        else:
-            print(form.errors)
-    else:
-        form = UserProfileForm(instance=request.user)
+class UserProfileView(TitleMixin, UpdateView):
+    model = User
+    form_class = UserProfileForm
+    template_name = 'main/personalaccount.html'
+    title = 'Профиль'
 
-    context = {
-        'title': "Личный кабинет",
-        'form': form,
-        'baskets': Basket.objects.filter(user=request.user),
-        'user': request.user
+    def get_success_url(self):
+        return reverse_lazy('profile', args=(self.object.id,))
 
-    }
-    return render(request, 'main/personalaccount.html', context)
-
-@login_required
-def logout(request):
-    auth.logout(request)
-    return redirect(reverse('home'))
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileView, self).get_context_data()
+        context['user'] = self.request.user
+        return context
 
 
-def registration(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Поздравляем! Вы успешно зарегестрировались')
-            return redirect(reverse('login'))
-    else:
-        form = UserRegistrationForm()
-    context = {
-        'form': form,
-        'title': "Регистрация"
-    }
-    return render(request, 'users/register.html', context)
+class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
+    model = User
+    template_name = 'users/register.html'
+    form_class = UserRegistrationForm
+    success_url = reverse_lazy('login')
+    success_message = "Вы успешно зарегестрированы!"
+    title = 'Регистрация'
+
 
 @login_required
 def orderhistory(request):
@@ -82,25 +70,10 @@ def stocks(request):
     return render(request, 'main/stocks.html', context)
 
 
-def login(request):
-    if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = request.POST['password']
-            user = auth.authenticate(email=email, password=password)
-            if user:
-                auth.login(request, user)
-                return redirect(reverse('home'))
-        else:
-            print(form.errors)
-    else:
-        form = UserLoginForm()
-    context = {
-        'form': form,
-        'title': "Авторизация"
-    }
-    return render(request, 'users/auth.html', context)
+class UserLoginView(TitleMixin, LoginView):
+    template_name = 'users/auth.html'
+    form_class = UserLoginForm
+    title = 'Авторизация'
 
 
 def menu(request):
@@ -149,4 +122,3 @@ def basket_remove(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
     return redirect(request.META['HTTP_REFERER'])
-

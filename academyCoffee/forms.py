@@ -1,25 +1,29 @@
-from .models import Product
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-from django.forms import ModelForm, TextInput, Textarea
-from academyCoffee.models import User
+from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
+                                       UserCreationForm)
 from phonenumber_field.modelfields import PhoneNumberField
+
+from academyCoffee.models import User
 
 
 class UserLoginForm(AuthenticationForm):
-    # PNumber = PhoneNumberField()
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control py-4',
         'placeholder': 'Введите пароль'
     }))
-    email = forms.CharField(widget=forms.EmailInput(attrs={
-        'class': 'form-control py-4',
-        'placeholder': 'Введите адрес эл. почты',
-    }))
+
+    username = PhoneNumberField(region="RU")
+
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            'class': 'form-control py-4',
+            'placeholder': 'Введите номер телефона(+7)'
+        })
 
     class Meta:
         model = User
-        fields = ('email', 'password')
+        fields = ('username', 'password')
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -90,7 +94,7 @@ class UserProfileForm(UserChangeForm):
         'class': 'change-region-select',
         'placeholder': 'Выберите город',
     }, choices=regions))
-    PNumber = PhoneNumberField()
+    PNumber = PhoneNumberField(region='RU')
     DateOfBirth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'change-date-form datetimepicker-input',
         'data-target': '#datetimepicker1',
