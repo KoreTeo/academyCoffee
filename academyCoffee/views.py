@@ -1,25 +1,69 @@
-from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
-
+from django.views.generic.list import ListView
+from django.conf import settings
 from academyCoffee.common.views import TitleMixin
+from http import HTTPStatus
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm
+from .models import Basket, Product, User, Order
+import stripe
+from django.db.models.functions import TruncMonth
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
-from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
-from .models import Basket, Product, User
+
+class SuccessTemplateView(TitleMixin, TemplateView):
+    template_name = 'orders/success.html'
+    title = 'Store - Спасибо за заказ!'
 
 
-@login_required
-def cart(request):
-    context = {
-        'title': "Корзина",
-        'baskets': Basket.objects.filter(user=request.user)
-    }
-    return render(request, 'main/cart.html', context)
+class CanceledTemplateView(TemplateView):
+    template_name = 'orders/canceled.html'
+
+
+class OrderCreateView(TitleMixin, CreateView):
+    model = Order
+    template_name = 'main/cart.html'
+    title = 'Корзина'
+    form_class = OrderForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        baskets = Basket.objects.filter(user=self.request.user)
+        form.instance.basket_history = {
+            'purchase_products': [basket.de_json() for basket in baskets],
+            'total_sum': float(sum(basket.sum() for basket in baskets))
+        }
+        baskets.delete()
+        form.instance.user = self.request.user
+        return super(OrderCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderCreateView, self).get_context_data()
+        context['baskets'] = Basket.objects.filter(user=self.request.user)
+        return context
+
+
+class OrderListView(TitleMixin, ListView):
+    template_name = 'main/orderhistory.html'
+    title = 'История заказов'
+    queryset = Order.objects.all()
+    dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    orderdates = Order.objects.annotate(month=TruncMonth('created')).values('month').distinct()
+
+    def get_queryset(self):
+        queryset = super(OrderListView, self).get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderListView, self).get_context_data()
+        context['dates'] = self.dates
+        context['orderdates'] = self.orderdates
+        return context
 
 
 class IndexView(TitleMixin, TemplateView):

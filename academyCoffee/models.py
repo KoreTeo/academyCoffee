@@ -69,7 +69,33 @@ class Basket(models.Model):
     def sum(self):
         return self.product.price * self.quantity
 
+    def de_json(self):
+        basket_item = {
+            'product_name': self.product.name,
+            'quantity': self.quantity,
+            'price': float(self.product.price),
+            'sum': float(self.sum())
+        }
+        return basket_item
+
 
 class Order(models.Model):
+    CREATED = 0
+    COOKING = 1
+    PREPARED = 2
+    DELIVERED = 3
+    STATUSES = (
+        (CREATED, 'Обработка'),
+        (COOKING, 'Готовим'),
+        (PREPARED, 'Можно забирать'),
+        (DELIVERED, 'Доставлен'),
+    )
+
+    basket_history = models.JSONField(default=dict)
+    created = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    productOrder = models.ManyToManyField(Basket)
+    status = models.SmallIntegerField(default=CREATED, choices=STATUSES)
+    address = models.CharField('Адрес', max_length=100)
+
+    def __str__(self):
+        return f'Заказ для {self.user}'

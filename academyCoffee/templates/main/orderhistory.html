@@ -6,118 +6,132 @@
 {% endblock %}
 
 {% block content %}
-<main>
-    <div class="up-line-container">
-        <h2 class="personal-up-title">История заказов</h2>
+    <main>
+        <div class="up-line-container">
+            <h2 class="personal-up-title">История заказов</h2>
             <a class="log-out">Выйти</a>
-    </div>
-    <div class="personal-line"></div>
-<div class="main-container">
-    <div class="personal-account-left-container">
-        <img class="personal-avatar" src="{{ personalaccount.image.url }}" width="120" height="120">
-        <p class="personal-name">{{ personalaccount.name }}Филипчук Филипп</p>
-        <ul class="personal-account-nav-list">
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link" href="#" >
-                    Текущий заказ
-                </a>
-            </li>
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link"  href="{% url 'profile' %}">
-                    Личные данные
-                </a>
-            </li>
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link active-link">
-                    История заказов
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="order-history-right-container">
-        <ul class="months-list">
-            <li class="months-list-item">
-                <h3>
-                    Апрель <span class="low-opacity-text">2023</span>
-                </h3>
-                <ul class="order-list">
-                    <li class="order-list-item waiting">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/waiting.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Ожидает</p>
-                                <p class="order-date">14 мая 2023, 15:00</p>
-                            </div>
-                                <p class="total-price">249 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
+        </div>
+        <div class="personal-line"></div>
+        <div class="main-container">
+            <div class="personal-account-left-container">
+                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="120"
+                     height="120">
+                <p class="personal-name">{{ user.first_name }}</p>
+                <ul class="personal-account-nav-list">
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="#">
+                            Текущий заказ
+                        </a>
                     </li>
-                    <li class="order-list-item done">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/done.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Получен</p>
-                                <p class="order-date">4 мая 2023, 14:30</p>
-                            </div>
-                                <p class="total-price">379 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="{% url 'profile' user.id %}">
+                            Личные данные
+                        </a>
                     </li>
-                    <li class="order-list-item canceled">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/canceled.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Отмене</p>
-                                <p class="order-date">1 мая 2023, 18:27</p>
-                            </div>
-                                <p class="total-price">125 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link active-link">
+                            История заказов
+                        </a>
                     </li>
                 </ul>
-            </li>
-            <li class="months-list-item">
-                <h3>
-                    Май <span class="low-opacity-text">2023</span>
-                </h3>
-                <ul class="order-list">
-                    <li class="order-list-item waiting">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/waiting.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Ожидает</p>
-                                <p class="order-date">14 мая 2023, 15:00</p>
-                            </div>
-                                <p class="total-price">249 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
-                    </li>
-                    <li class="order-list-item done">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/done.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Получен</p>
-                                <p class="order-date">4 мая 2023, 14:30</p>
-                            </div>
-                                <p class="total-price">379 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
-                    </li>
-                    <li class="order-list-item canceled">
-                        <div class="order-list-item-container">
-                            <img class="status-image" src="{% static 'orderhistory/img/canceled.svg' %}">
-                            <div class="order-list-item-middle-container">
-                                <p class="status-text">Отмене</p>
-                                <p class="order-date">1 мая 2023, 18:27</p>
-                            </div>
-                                <p class="total-price">125 руб.</p>
-                        </div>
-                        <div class="order-list-line"></div>
-                    </li>
+            </div>
+            <div class="order-history-left-container">
+
+                <ul class="months-list">
+                    {% for orderdate in orderdates %}
+                        <li class="months-list-item">
+                            {% if orderdate.month.month == 1 %}
+                                <h3>
+                                    Январь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 2 %}
+                                <h3>
+                                    Февраль <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 3 %}
+                                <h3>
+                                    Март <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 4 %}
+                                <h3>
+                                    Апрель <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 5 %}
+                                <h3>
+                                    Май <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 6 %}
+                                <h3>
+                                    Июнь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 7 %}
+                                <h3>
+                                    Июль <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 8 %}
+                                <h3>
+                                    Август <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 9 %}
+                                <h3>
+                                    Сентябрь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 10 %}
+                                <h3>
+                                    Октябрь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 11 %}
+                                <h3>
+                                    Ноябрь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            {% if orderdate.month.month == 12 %}
+                                <h3>
+                                    Декабрь <span class="low-opacity-text">{{ orderdate.month.year }}</span>
+                                </h3>
+                            {% endif %}
+                            <ul class="order-list">
+                                {% for order in object_list %}
+                                    {% if order.created.month == orderdate.month.month %}
+                                        <li class="order-list-item waiting">
+                                            <div class="order-list-item-container">
+                                                <img class="status-image"
+                                                        {% if order.status == 0 %}
+                                                     src="{% static 'orderhistory/img/waiting.svg' %}"
+                                                        {% elif order.status == 1 %}
+                                                     src="{% static 'orderhistory/img/waiting.svg' %}"
+                                                        {% elif order.status == 2 %}
+                                                     src="{% static 'orderhistory/img/waiting.svg' %}"
+                                                        {% elif order.status == 3 %}
+                                                     src="{% static 'orderhistory/img/done.svg' %}"
+                                                        {% endif %}>
+                                                <div class=" order-list-item-middle-container">
+                                                    <p class="status-text">{{ order.get_status_display }}</p>
+                                                    <p class="order-date">{{ order.created }}</p>
+                                                </div>
+                                                <p class="total-price">{{ order.basket_history.total_sum }}</p>
+                                            </div>
+                                            <div class="order-list-line"></div>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                    {% endfor %}
                 </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-</main>
+
+            </div>
+        </div>
+    </main>
 {% endblock %}

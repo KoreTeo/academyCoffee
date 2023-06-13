@@ -111,7 +111,13 @@
                     </div>
                     <div class="total-line-last"></div>
                     <p id="final-price">{{ baskets.total_sum }} руб.</p>
-                    <button type="submit" class="make-order">Заказать</button>
+                    <form action="{% url 'cart' %}" method="post">
+                        {% csrf_token %}
+                        <label for="{{ form.address.id_for_label }}">
+                            {{ form.address }}
+                            <button type="submit" class="make-order" href=>Заказать</button>
+                        </label>
+                    </form>
                 </div>
             </div>
         </div>

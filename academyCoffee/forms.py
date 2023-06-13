@@ -3,7 +3,7 @@ from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
                                        UserCreationForm)
 from phonenumber_field.modelfields import PhoneNumberField
 
-from academyCoffee.models import User
+from academyCoffee.models import User, Order
 
 
 class UserLoginForm(AuthenticationForm):
@@ -107,3 +107,9 @@ class UserProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('first_name', 'region', 'PNumber', 'DateOfBirth')
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('address',)

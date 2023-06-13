@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'academyCoffee.apps.AcademycoffeeConfig',
     'phonenumber_field',
+    'stripe'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ AUTH_USER_MODEL = 'academyCoffee.User'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51NIYd6JDi4OmLgzaW96mMdvQaUreIhnqlAbt5OppU7lZTm0GQw0SoevSrACt8vBi71i4yDLcDNTaZtMPBy9zDdwY00Up1tkr61'
+STRIPE_SECRET_KEY = 'sk_test_51NIYd6JDi4OmLgzaevcsS36PgfwCcTUTTCXOyP3d7jWhVOa2foRnikEojGy1a6G18IhUICBVuBGtM0C5MDrvkxro00tjN0t3hI'

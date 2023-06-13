@@ -6,15 +6,17 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
-    path('cart/', views.cart, name='cart'),
+    path('cart/', views.OrderCreateView.as_view(), name='cart'),
     path('menu/', views.menu, name='menu'),
     path('account/<int:pk>/', login_required(views.UserProfileView.as_view()), name='profile'),
     path('stocks/', views.stocks, name='stocks'),
     path('registration/', views.UserRegistrationView.as_view(), name='registration'),
     path('about/', views.about, name='about'),
-    path('history/', views.orderhistory, name='orderhistory'),
+    path('history/', views.OrderListView.as_view(), name='orderhistory'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('baskets/add/<int:product_id>/', views.basket_add, name='basket_add'),
     path('baskets/deletion/<int:product_id>/', views.basket_deletion, name='basket_deletion'),
+    path('cart/success', views.SuccessTemplateView.as_view(), name='order_success'),
+    path('cart/caceled/', views.CanceledTemplateView.as_view(), name='order_canceled'),
 ]
