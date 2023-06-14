@@ -54,7 +54,6 @@ class OrderListView(TitleMixin, ListView):
     title = 'История заказов'
     queryset = Order.objects.all()
     dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    orderdates = Order.objects.annotate(month=TruncMonth('created')).values('month').distinct()
 
     def get_queryset(self):
         queryset = super(OrderListView, self).get_queryset()
@@ -63,7 +62,8 @@ class OrderListView(TitleMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(OrderListView, self).get_context_data()
         context['dates'] = self.dates
-        context['orderdates'] = self.orderdates
+        context['orderdates'] = Order.objects.filter(user=self.request.user).annotate(
+            month=TruncMonth('created')).values('month').distinct()
         return context
 
 
