@@ -137,7 +137,7 @@
                             <div class="modal-change-number-content">
                                 <a class="close-modal-number"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
                                 <p class="modal-change-number-title">Изменить номер телефона</p>
-                                <p class="modal-change-number-hint">+7xxxxxxxxxx</p>
+                                <p class="modal-change-number-hint">8xxxxxxxxxx</p>
                                 <form action="{% url 'profile' user.id %}" method="post">
                                     {% csrf_token %}
                                     <label for="{{ form.PNumber.id_for_label }}">
@@ -189,35 +189,10 @@
                         <img src="{% static 'personalaccount/img/mir.png' %}" width="45" height="20">
                     </div>
                 </div>
-                <a class="add-payment-method">
+                <a class="add-payment-method" href="{% url 'addcart' %}">
                     <img src="{% static 'personalaccount/img/add-card.svg' %}" width="50" height="50">
                     <p>Добавить новую карту</p>
                 </a>
-            </div>
-        </section>
-        <section class="subscriptions">
-            <h3 class="subscriptions-title">Подписки</h3>
-            <div class="email-subscriptions">
-                <h4>Рассылки на почту</h4>
-                <div class="email-subscriptions-check-container">
-                    <div class="form_radio_btn">
-                        <input id="check-1" type="checkbox" name="radio" value="1">
-                        <label for="check-1">Акции, персональные промокоды<br> и секретные распродажи</label>
-                    </div>
-                    <div class="form_radio_btn">
-                        <input id="check-2" type="checkbox" name="radio" value="2">
-                        <label for="check-2">Личные рекомендации товаров</label>
-                    </div>
-                </div>
-            </div>
-            <div class="SMS-subscriptions">
-                <h4>Рассылки по СМС</h4>
-                <div class="SMS-subscriptions-check-container">
-                    <div class="form_radio_btn">
-                        <input id="check-3" type="checkbox" name="radio" value="3">
-                        <label for="check-3">Включить</label>
-                    </div>
-                </div>
             </div>
         </section>
     </div>

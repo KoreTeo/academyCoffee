@@ -1,0 +1,10 @@
+
+
+.front-container-card {
+    background: #FBFBFB;
+    box-shadow: 0 4px 36px rgba(0, 0, 0, 0.1);
+    border-radius: 35px;
+    height: 326px;
+    width: 556px;
+    padding: 40px 45px;
+}

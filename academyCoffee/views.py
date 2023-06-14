@@ -13,6 +13,7 @@ from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderFo
 from .models import Basket, Product, User, Order
 import stripe
 from django.db.models.functions import TruncMonth
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -112,6 +113,13 @@ def stocks(request):
         'title': "Акции"
     }
     return render(request, 'main/stocks.html', context)
+
+
+def addcart(request):
+    context = {
+        'title': "Добавление новой карты"
+    }
+    return render(request, 'main/addcart.html', context)
 
 
 class UserLoginView(TitleMixin, LoginView):
