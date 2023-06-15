@@ -127,7 +127,11 @@ class CreateUserCardView(TitleMixin, CreateView):
         form.instance.user = self.request.user
         return super(CreateUserCardView, self).form_valid(form)
 
-
+def currentorder(request):
+    context = {
+        'title': "Текущий заказ"
+    }
+    return render(request, 'main/currentorder.html', context)
 class UserLoginView(TitleMixin, LoginView):
     template_name = 'users/auth.html'
     form_class = UserLoginForm
