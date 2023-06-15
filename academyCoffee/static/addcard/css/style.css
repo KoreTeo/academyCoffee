@@ -1,10 +1,141 @@
+.main-card-container {
+    width: 701px;
+    margin: 0 auto;
+}
 
+.main-card-container h2 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 50px;
+}
 
 .front-container-card {
     background: #FBFBFB;
     box-shadow: 0 4px 36px rgba(0, 0, 0, 0.1);
     border-radius: 35px;
-    height: 326px;
-    width: 556px;
+    height: 246px;
+    width: 466px;
     padding: 40px 45px;
+    z-index: 2;
+}
+
+.container-cards-images {
+    width: 276px;
+    height: 45px;
+    margin: 0 0 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.front-container-card label {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.front-container-card input {
+    border: 1px solid #A3A3A3;
+    border-radius: 15px;
+}
+
+.card-number-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#card-number {
+    text-align: center;
+    font-size: 26px;
+    line-height: 20px;
+    width: 426px;
+    height: 34px;
+    border: 1px solid #A3A3A3;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    display: block;
+    padding: 10px 20px;
+}
+
+.card-month-label {
+    display: block;
+    margin-bottom: 14px;
+}
+
+#card-month, #card-year {
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    width: 19px;
+    height: 21px;
+    padding: 13px 24px;
+}
+
+#card-month {
+    width: 31px;
+    padding: 13px 18px;
+}
+
+.back-container-card {
+    position: relative;
+    z-index: -2;
+    box-shadow: 0 4px 45px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 35px;
+    height: 336px;
+    width: 556px;
+    margin-top: -261px;
+    margin-left: 145px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.up-rectangle {
+    background: rgba(189, 235, 235, 0.75);
+    height: 60px;
+    width: 145px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.out-of-container {
+    margin-left: 540px;
+    margin-top: -106px;
+}
+
+.card-cvv-label {
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 40px;
+    margin-bottom: 13px;
+}
+
+#card-cvv {
+    margin-right: 40px;
+    height: 21px;
+    width: 33px;
+    border-radius: 15px;
+    background: #F8F8F8;
+    border: 1px solid #A3A3A3;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 13px 17px;
+    margin-bottom: 12px;
+}
+
+.cvv-hint {
+    margin-right: 5px;
+    font-size: 14px;
+    line-height: 17px;
+    height: 63px;
+    width: 111px;
+}
+
+.bind-card-button {
+    background: #E6E6E6;
+    border-radius: 20px;
+    width: 701px;
+    height: 62px;
+    border: none;
+    font-size: 26px;
+    line-height: 32px;
 }

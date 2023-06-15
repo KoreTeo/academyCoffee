@@ -2,19 +2,36 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'cart/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'addcard/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
     <main class="main">
-        <div class="main-container">
+        <div class="main-card-container">
             <h2>Привязка банковской карты</h2>
             <div class="front-container-card">
-
+                <div class="container-cards-images">
+                    <img src="{% static 'addcard/img/mir.png' %}" width="88" height="30">
+                    <img src="{% static 'addcard/img/visa.png' %}" width="90" height="30">
+                    <img src="{% static 'addcard/img/mastercard.png' %}">
+                </div>
+                    <label class="card-number-label" for="card-number">Номер карты</label>
+                    <input id="card-number" type="text">
+                    <label class="card-month-label" for="card-month">Действует до</label>
+                    <input id="card-month" type="text" placeholder="ММ">
+                    <span>/</span>
+                    <label class="card-year-label" for="card-year"></label>
+                    <input  id="card-year" type="text" placeholder="ГГ">
+                    <div class="out-of-container">
+                    <label class="card-cvv-label" for="card-cvv">CVV/CVC</label>
+                    <input id="card-cvv" type="text" placeholder="000">
+                    <p class="cvv-hint">три цифры с обратной стороны карты</p>
+                    </div>
             </div>
-            <div class="back-container-card">
-
+            <div class="back-container-card" style="background: url({% static 'addcard/img/background-back-card.png' %})">
+                <div class="up-rectangle"></div>
             </div>
+            <button class="bind-card-button">Привязать</button>
         </div>
     </main>
 {% endblock %}
