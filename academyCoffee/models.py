@@ -40,11 +40,20 @@ class User(AbstractUser):
     region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
     PNumber = PhoneNumberField('Номер телефона', blank=False, null=False, unique=True, region="RU")
     DateOfBirth = models.DateField("День рождения", default=timezone.now)
+
     USERNAME_FIELD = "PNumber"
     REQUIRED_FIELDS = ["email"]
 
     def __str__(self):
         return f'Имя: {self.first_name} | Email: {self.email} | Номер телефона: {str(self.PNumber)}'
+
+
+class UserCard(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    number = models.DecimalField(max_digits=16, decimal_places=0)
+    month = models.DecimalField(max_digits=2, decimal_places=0)
+    year = models.DecimalField(max_digits=2, decimal_places=0)
+    CVCCode = models.DecimalField(max_digits=3, decimal_places=0)
 
 
 class BasketQuerySet(models.QuerySet):
@@ -95,6 +104,7 @@ class Order(models.Model):
     created = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     status = models.SmallIntegerField(default=CREATED, choices=STATUSES)
+    serving = models.CharField('Сервировка', max_length=50)
     address = models.CharField('Адрес', max_length=100)
 
     def __str__(self):

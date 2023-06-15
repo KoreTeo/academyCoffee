@@ -9,7 +9,7 @@ from django.views.generic.list import ListView
 from django.conf import settings
 from academyCoffee.common.views import TitleMixin
 from http import HTTPStatus
-from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm
 from .models import Basket, Product, User, Order
 import stripe
 from django.db.models.functions import TruncMonth
@@ -115,11 +115,17 @@ def stocks(request):
     return render(request, 'main/stocks.html', context)
 
 
-def addcart(request):
-    context = {
-        'title': "Добавление новой карты"
-    }
-    return render(request, 'main/addcart.html', context)
+class CreateUserCardView(TitleMixin, CreateView):
+    template_name = 'main/addcart.html'
+    title = 'Добавление новой карты'
+    form_class = CreateUserCardForm
+
+    def get_success_url(self):
+        return reverse_lazy('profile', args=(self.object.id,))
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateUserCardView, self).form_valid(form)
 
 
 class UserLoginView(TitleMixin, LoginView):

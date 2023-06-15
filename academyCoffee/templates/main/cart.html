@@ -24,7 +24,8 @@
                             <li class="cart-list-item">
                                 <div class="cart-list-item-container">
                                     <div class="item-description">
-                                        <div class="item-image"><img src="{{ basket.product.image.url }}" alt="{{ basket.product.name }}"></div>
+                                        <div class="item-image"><img src="{{ basket.product.image.url }}"
+                                                                     alt="{{ basket.product.name }}"></div>
                                         <div class="item-description-text">
                                             <h3>{{ basket.product.name }}</h3>
                                             <ul class="additives-list">
@@ -82,90 +83,99 @@
                         <div class="modal-change-payment">
                             <div class="modal-change-payment-content">
                                 <h3 class="modal-change-payment-title">Способ оплаты</h3>
-                                    <form>
-                                        <!-- Здесь нужно вывод имеющихся карт: нажатие обновляет страницу и метод оплаты-->
-                                        <div class="radio-button">
-                                            <div class="radio-button-image"><img src="{% static 'cart/img/logos_mastercard.svg' %}"></div>
-                                                <label for="card_1">MasterCard  ***1234</label>
-                                            <input id="card_1" type="radio" name="payment" value="" checked>
+                                <form>
+                                    <!-- Здесь нужно вывод имеющихся карт: нажатие обновляет страницу и метод оплаты-->
+                                    <div class="radio-button">
+                                        <div class="radio-button-image"><img
+                                                src="{% static 'cart/img/logos_mastercard.svg' %}"></div>
+                                        <label for="card_1">MasterCard ***1234</label>
+                                        <input id="card_1" type="radio" name="payment" value="" checked>
+                                    </div>
+                                    <!-- По образцу между комментариев-->
+                                    <div class="radio-button">
+                                        <div class="radio-button-image"><img src="{% static 'cart/img/SBP.png' %}">
                                         </div>
-                                        <!-- По образцу между комментариев-->
-                                        <div class="radio-button">
-                                            <div class="radio-button-image"><img src="{% static 'cart/img/SBP.png' %}"></div>
-                                            <label for="SBP">СБП</label>
-                                            <input id="SBP" type="radio" name="payment" value="">
+                                        <label for="SBP">СБП</label>
+                                        <input id="SBP" type="radio" name="payment" value="">
+                                    </div>
+                                    <div class="radio-button">
+                                        <div class="radio-button-image"><img src="{% static 'cart/img/cash.svg' %}">
                                         </div>
-                                        <div class="radio-button">
-                                            <div class="radio-button-image"><img src="{% static 'cart/img/cash.svg' %}"></div>
-                                            <label for="cash">Наличные</label>
-                                            <input id="cash" type="radio" name="payment" value="">
-                                        </div>
-                                        <button id="close-modal-payment" type="submit">
-                                            Выбрать
-                                        </button>
-                                    </form>
+                                        <label for="cash">Наличные</label>
+                                        <input id="cash" type="radio" name="payment" value="">
+                                    </div>
+                                    <button id="close-modal-payment" type="submit">
+                                        Выбрать
+                                    </button>
+                                </form>
                                 <a class="link-add-card" href="{% url 'addcart' %}">Добавить новую карту</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="where-to-eat">
-                    <h3 class="payment-method-titles">Сервировка</h3>
-                    <div class="where-to-eat-radio-buttons">
-                        <div class="where-to-eat-radio-button">
-                            <input name="where-to-eat" id="restaurant" type="radio">
-                            <label for="restaurant">В ресторане</label>
-                        </div>
-                        <div class="where-to-eat-radio-button">
-                            <input name="where-to-eat" id="takeaway" type="radio">
-                            <label for="takeaway">С собой</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="address">
-                    <h3 class="payment-method-titles">Адрес</h3>
-                    <select class="address-select">
-                        <option>Красноярск, Мира, 96</option>
-                        <option>Красноярск, Батурина, 13</option>
-                    </select>
-                </div>
-                <div class="total-container">
-                    <h3 class="payment-method-titles">
-                        ИТОГ
-                    </h3>
-                    <div class="total-line-first"></div>
-                    <div class="total-price">
-                        <p>
-                            Стоимость товаров
-                        </p>
-                        <p>
-                            {{ baskets.total_sum }} руб.
-                        </p>
-                    </div>
-                    <div class="promo-code">
-                        <p>
-                            Промокод
-                        </p>
-                        <div class="promo-code-area">
-                            <label>
-                                <input class="promo-code-input" rel="">
-                                <button class="promo-code-button" rel="submit">
-                                    <img src="{% static 'cart/img/check_mark.png' %}" width="18" height="13"
-                                         alt="Применить">
-                                </button>
-                            </label>
+                <form action="{% url 'cart' %}" method="post">{% csrf_token %}
+                    <div class="where-to-eat">
+                        <h3 class="payment-method-titles">Сервировка</h3>
+                        <div class="where-to-eat-radio-buttons">
+                            {#                        <div class="where-to-eat-radio-button">#}
+                            {#                            <input name="where-to-eat" id="restaurant" type="radio">#}
+                            {#                            <label for="restaurant">В ресторане</label>#}
+                            {#                        </div>#}
+                            {#                        <div class="where-to-eat-radio-button">#}
+                            {#                            <input name="where-to-eat" id="takeaway" type="radio">#}
+                            {#                            <label for="takeaway">С собой</label>#}
+                            {#                        </div>#}
+                            {% for radio in form.serving %}
+                                <label for="{{ radio.id_for_label }}" class="where-to-eat-radio-button">
+                                    {{ radio.tag }}
+                                    {{ radio.choice_label }}
+
+                                </label>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="total-line-last"></div>
-                    <p id="final-price">{{ baskets.total_sum }} руб.</p>
-                    <form action="{% url 'cart' %}" method="post">
-                        {% csrf_token %}
-                        <label for="{{ form.address.id_for_label }}">
-                            {{ form.address }}
+                    <div class="address">
+                        <h3 class="payment-method-titles">Адрес</h3>
+                        {{ form.address }}
+                    </div>
+                    <div class="total-container">
+                        <h3 class="payment-method-titles">
+                            ИТОГ
+                        </h3>
+                        <div class="total-line-first"></div>
+                        <div class="total-price">
+                            <p>
+                                Стоимость товаров
+                            </p>
+                            <p>
+                                {{ baskets.total_sum }} руб.
+                            </p>
+                        </div>
+                        <div class="promo-code">
+                            <p>
+                                Промокод
+                            </p>
+                            <div class="promo-code-area">
+                                <label>
+                                    <input class="promo-code-input" rel="">
+                                    <button class="promo-code-button" rel="submit">
+                                        <img src="{% static 'cart/img/check_mark.png' %}" width="18" height="13"
+                                             alt="Применить">
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="total-line-last"></div>
+                        <p id="final-price">{{ baskets.total_sum }} руб.</p>
+
+
+                        <label>
+
                             <button type="submit" class="make-order" href=>Заказать</button>
                         </label>
-                    </form>
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
     </main>

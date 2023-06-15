@@ -7,31 +7,35 @@
 
 {% block content %}
     <main class="main">
-        <div class="main-card-container">
-            <h2>Привязка банковской карты</h2>
-            <div class="front-container-card">
-                <div class="container-cards-images">
-                    <img src="{% static 'addcard/img/mir.png' %}" width="88" height="30">
-                    <img src="{% static 'addcard/img/visa.png' %}" width="90" height="30">
-                    <img src="{% static 'addcard/img/mastercard.png' %}">
-                </div>
-                    <label class="card-number-label" for="card-number">Номер карты</label>
-                    <input id="card-number" type="text">
-                    <label class="card-month-label" for="card-month">Действует до</label>
-                    <input id="card-month" type="text" placeholder="ММ">
-                    <span>/</span>
-                    <label class="card-year-label" for="card-year"></label>
-                    <input  id="card-year" type="text" placeholder="ГГ">
-                    <div class="out-of-container">
-                    <label class="card-cvv-label" for="card-cvv">CVV/CVC</label>
-                    <input id="card-cvv" type="text" placeholder="000">
-                    <p class="cvv-hint">три цифры с обратной стороны карты</p>
+        <form action="{% url 'addcart' %}" method="post">{% csrf_token %}
+            <div class="main-card-container">
+                <h2>Привязка банковской карты</h2>
+                <div class="front-container-card">
+                    <div class="container-cards-images">
+                        <img src="{% static 'addcard/img/mir.png' %}" width="88" height="30">
+                        <img src="{% static 'addcard/img/visa.png' %}" width="90" height="30">
+                        <img src="{% static 'addcard/img/mastercard.png' %}">
                     </div>
+                    <label class="card-number-label" for="{{ form.number.id_for_label }}">Номер карты</label>
+                    {{ form.number }}
+                    <label class="card-month-label" for="{{ form.month.id_for_label }}">Действует до</label>
+                    {{ form.month }}
+                    <span>/</span>
+                    <label class="card-year-label" for="{{ form.year.id_for_label }}"></label>
+                    {{ form.year }}
+                    <div class="out-of-container">
+                        <label class="card-cvv-label" for="{{ form.CVCCode.id_for_label }}">CVV/CVC</label>
+                        {{ form.CVCCode }}
+                        <p class="cvv-hint">три цифры с обратной стороны карты</p>
+                    </div>
+                </div>
+                <div class="back-container-card"
+                     style="background: url({% static 'addcard/img/background-back-card.png' %})">
+                    <div class="up-rectangle"></div>
+                </div>
+                <button class="bind-card-button" type="submit">Привязать</button>
+
             </div>
-            <div class="back-container-card" style="background: url({% static 'addcard/img/background-back-card.png' %})">
-                <div class="up-rectangle"></div>
-            </div>
-            <button class="bind-card-button">Привязать</button>
-        </div>
+        </form>
     </main>
 {% endblock %}

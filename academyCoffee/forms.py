@@ -2,8 +2,9 @@ from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
                                        UserCreationForm)
 from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from academyCoffee.models import User, Order
+from academyCoffee.models import User, Order, UserCard
 
 
 class UserLoginForm(AuthenticationForm):
@@ -110,6 +111,45 @@ class UserProfileForm(UserChangeForm):
 
 
 class OrderForm(forms.ModelForm):
+    servings = [
+        ('В ресторане', 'В ресторане'),
+        ('С собой', 'С собой'),
+    ]
+    addresses = [
+        ('Батурина', 'Батурина'),
+        ('Ещё какая-то залупа', 'Ещё какая-то залупа'),
+    ]
+
+    address = forms.CharField(widget=forms.Select(attrs={
+        'id': 'regions',
+        'class': 'address-select',
+        'placeholder': 'Выберите город',
+    }, choices=addresses))
+
     class Meta:
         model = Order
-        fields = ('address',)
+        fields = ('address', 'serving')
+        servings = [
+            ('В ресторане', 'В ресторане'),
+            ('С собой', 'С собой'),
+        ]
+        widgets = {'serving': forms.RadioSelect(attrs={'name': 'where-to-eat'}, choices=servings)}
+
+
+class CreateUserCardForm(forms.ModelForm):
+    number = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'Номер карты',
+    }))
+    month = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'ММ',
+    }))
+    year = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'ГГ',
+    }))
+    CVCCode = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'CVC',
+    }))
+
+    class Meta:
+        model = UserCard
+        fields = ('number', 'month', 'year', 'CVCCode')
