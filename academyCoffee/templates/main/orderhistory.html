@@ -14,11 +14,12 @@
         <div class="personal-line"></div>
         <div class="main-container">
             <div class="personal-account-left-container">
-                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112" height="112">
+                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="120"
+                     height="120">
                 <p class="personal-name">{{ user.first_name }}</p>
                 <ul class="personal-account-nav-list">
                     <li class="personal-account-nav-list-item">
-                        <a class="personal-account-nav-link" href="{% url 'currentorder' %}">
+                        <a class="personal-account-nav-link" href="#">
                             Текущий заказ
                         </a>
                     </li>
@@ -35,7 +36,7 @@
                 </ul>
             </div>
             <div class="order-history-left-container">
-            <button class="left-arrow-button"><img src="{% static 'orderhistory/img/arrow-line.svg' %}" width="40" height="40"></button>
+
                 <ul class="months-list">
                     {% for orderdate in orderdates %}
                         <li class="months-list-item">
@@ -129,7 +130,7 @@
 
                     {% endfor %}
                 </ul>
-            <button class="right-arrow-button"><img src="{% static 'orderhistory/img/arrow-line.svg' %}" width="40" height="40"></button>
+
             </div>
         </div>
     </main>

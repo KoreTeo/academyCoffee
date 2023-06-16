@@ -131,12 +131,11 @@
 }
 
 .bind-card-button {
-    background: #CAF4EF;
+    background: #E6E6E6;
     border-radius: 20px;
     width: 701px;
     height: 62px;
     border: none;
     font-size: 26px;
     line-height: 32px;
-    font-weight: 500;
 }

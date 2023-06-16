@@ -27,11 +27,13 @@
     width: 255px;
     display: flex;
     flex-direction: column;
+    margin-right: 89px;
 }
 
 .personal-avatar {
-    width: 112px;
-    height: 112px;
+    padding: 15px;
+    width: 135px;
+    height: 135px;
     display: block;
 }
 
@@ -60,10 +62,8 @@
     font-weight: bold;
 }
 
-.order-history-left-container {
-    display: flex;
+.order-history-right-container {
     margin-top: 20px;
-    align-items: center;
 }
 
 .months-list {
@@ -124,18 +124,4 @@
     width: 386px;
     border-bottom: 1px solid #CACACA;
     margin: 30px 0;
-}
-
-.right-arrow-button, .left-arrow-button {
-    background: none;
-    border: none;
-}
-
-.left-arrow-button {
-    transform: rotate(180deg);
-    margin-right: 10px;
-}
-
-.right-arrow-button {
-    margin-left: 10px;
 }
