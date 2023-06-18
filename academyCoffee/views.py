@@ -108,11 +108,6 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     title = 'Регистрация'
 
 
-@login_required
-def orderhistory(request):
-    return render(request, 'main/orderhistory.html', {'title': "История заказов"})
-
-
 def stocks(request):
     context = {
         'title': "Акции"
@@ -138,6 +133,15 @@ def currentorder(request):
         'title': "Текущий заказ"
     }
     return render(request, 'main/currentorder.html', context)
+
+
+class CurrentOrderView(TitleMixin, TemplateView):
+    template_name = 'main/currentorder.html'
+    title = "Текущий заказ"
+    def get_context_data(self):
+        context = super(CurrentOrderView, self).get_context_data()
+        context['lastorder'] = Order.objects.filter(user=self.request.user).last()
+        return context
 
 
 class UserLoginView(TitleMixin, LoginView):

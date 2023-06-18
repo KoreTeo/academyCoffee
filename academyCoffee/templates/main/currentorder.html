@@ -8,83 +8,85 @@
 
 {% block content %}
     <main>
-    <div class="up-line-container">
-        <h2 class="personal-up-title">Личный кабинет</h2>
-        <a class="log-out" href="{% url 'logout' %}">Выйти</a>
-    </div>
-    <div class="personal-line"></div>
-    <div class="main-container">
-        <div class="personal-account-left-container">
-            <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112" height="112">
-            <p class="personal-name">{{ user.first_name }}</p>
-            <ul class="personal-account-nav-list">
-                <li class="personal-account-nav-list-item">
-                    <a class="personal-account-nav-link active-link">
-                        Текущий заказ
-                    </a>
-                </li>
-                <li class="personal-account-nav-list-item">
-                    <a class="personal-account-nav-link" href="{% url 'profile' user.id %}">
-                        Личные данные
-                    </a>
-                </li>
-                <li class="personal-account-nav-list-item">
-                    <a class="personal-account-nav-link" href="{% url 'orderhistory' %}" >
-                        История заказов
-                    </a>
-                </li>
-            </ul>
+        <div class="up-line-container">
+            <h2 class="personal-up-title">Личный кабинет</h2>
+            <a class="log-out" href="{% url 'logout' %}">Выйти</a>
         </div>
-        <div class="personal-account-right-container">
-            <div class="order-status">
-            <!--Тут по состоянию заказа нужно сделать-->
-                {% if true %}
-                <img src="{% static 'currentorder/img/оформление.png' %}" alt="Оформление заказа">
-                {% elif false %}
-                <img src="{% static 'currentorder/img/готовим.png' %}" alt="Заказ готовится">
-                {% else %}
-                <img src="{% static 'currentorder/img/готово.png' %}" alt="Заказ готов">
-                {% endif %}
+        <div class="personal-line"></div>
+        <div class="main-container">
+            <div class="personal-account-left-container">
+                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112"
+                     height="112">
+                <p class="personal-name">{{ user.first_name }}</p>
+                <ul class="personal-account-nav-list">
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link active-link">
+                            Текущий заказ
+                        </a>
+                    </li>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="{% url 'profile' user.id %}">
+                            Личные данные
+                        </a>
+                    </li>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="{% url 'orderhistory' %}">
+                            История заказов
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="order-info">
-                <div class="order-info-left-container">
-                    <div class="order-item">
-                        <p class="order-item-name">Латте</p>
-                        <p class="order-item-amount">х1</p>
-                        <p class="order-item-price">150 руб</p>
-                    </div>
-                    <div class="order-item">
-                        <p class="order-item-name">Бейгл с омлетом</p>
-                        <p class="order-item-amount">х1</p>
-                        <p class="order-item-price">230 руб.</p>
-                    </div>
-                    <p class="order-price">Итого: 380 руб.</p>
+            <div class="personal-account-right-container">
+                <div class="order-status">
+                    <!--Тут по состоянию заказа нужно сделать-->
+                    {% if true %}
+                        <img src="{% static 'currentorder/img/оформление.png' %}" alt="Оформление заказа">
+                    {% elif false %}
+                        <img src="{% static 'currentorder/img/готовим.png' %}" alt="Заказ готовится">
+                    {% else %}
+                        <img src="{% static 'currentorder/img/готово.png' %}" alt="Заказ готов">
+                    {% endif %}
                 </div>
-                <div class="order-info-middle-line"></div>
-                <div class="order-info-right-container">
-                    <div class="order-waiting-time">
-                        <p class="order-info-right-container-title">Ожидание заказа</p>
-                        <p class="order-info-right-container-data">15 минут</p>
+                <div class="order-info">
+                    <div class="order-info-left-container">
+                        {% for product in lastorder.basket_history.purchase_products %}
+                            <div class="order-item">
+                                <p class="order-item-name">{{ product.product_name }}</p>
+                                <p class="order-item-amount">x{{ product.quantity }}</p>
+                                <p class="order-item-price">{{ product.price }} </p>
+                            </div>
+                        {% endfor %}
+                        <p class="order-price">{{ lastorder.basket_history.total_sum }} руб.</p>
                     </div>
-                    <div class="order-date-time">
-                        <p class="order-info-right-container-title">Время заказа</p>
-                        <p class="order-info-right-container-data">7 июня 2023, 16:41</p>
-                    </div>
-                    <div class="order-where-to-eat">
-                        <p class="order-info-right-container-title">Сервировка</p>
-                        <p class="order-info-right-container-data">С собой</p>
-                    </div>
-                    <div class="order-payment-method">
-                        <p class="order-info-right-container-title">Способ оплаты</p>
-                        <p class="order-info-right-container-data">СБП</p>
-                    </div>
-                    <div class="order-address">
-                        <p class="order-info-right-container-title">Адрес ресторана</p>
-                        <p class="order-info-right-container-data">78 Добровольческой бригады, 4</p>
+                    <div class="order-info-middle-line"></div>
+                    <div class="order-info-right-container">
+                        <div class="order-waiting-time">
+                            <p class="order-info-right-container-title">Ожидание заказа</p>
+                            <p class="order-info-right-container-data">15 минут</p>
+                        </div>
+                        <div class="order-date-time">
+                            <p class="order-info-right-container-title">Время заказа</p>
+                            <p class="order-info-right-container-data">{{ lastorder.created }}</p>
+                        </div>
+                        <div class="order-where-to-eat">
+                            <p class="order-info-right-container-title">Сервировка</p>
+                            <p class="order-info-right-container-data">{{ lastorder.serving }}</p>
+                        </div>
+                        <div class="order-payment-method">
+                            <p class="order-info-right-container-title">Способ оплаты</p>
+                            {% if lastorder.payment_method == 'Наличные' %}
+                                <p class="order-info-right-container-data">{{ lastorder.payment_method }}</p>
+                            {% else %}
+                                <p class="order-info-right-container-data">***{{ lastorder.payment_method }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="order-address">
+                            <p class="order-info-right-container-title">Адрес ресторана</p>
+                            <p class="order-info-right-container-data">{{ lastorder.address }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </main>
 {% endblock %}

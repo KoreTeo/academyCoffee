@@ -336,7 +336,7 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
                                     {% if basket.product == product %}
                                         {% comment %}              Настроить стили                {% endcomment %}
