@@ -10,9 +10,10 @@ from django.conf import settings
 from academyCoffee.common.views import TitleMixin
 from http import HTTPStatus
 from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm
-from .models import Basket, Product, User, Order
+from .models import Basket, Product, User, Order, UserCard
 import stripe
 from django.db.models.functions import TruncMonth
+from django.core.paginator import Paginator
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -35,6 +36,7 @@ class OrderCreateView(TitleMixin, CreateView):
 
     def form_valid(self, form):
         baskets = Basket.objects.filter(user=self.request.user)
+        form.instance.payment_method = self.request.user.payment_method
         form.instance.basket_history = {
             'purchase_products': [basket.de_json() for basket in baskets],
             'total_sum': float(sum(basket.sum() for basket in baskets))
@@ -52,18 +54,20 @@ class OrderCreateView(TitleMixin, CreateView):
 class OrderListView(TitleMixin, ListView):
     template_name = 'main/orderhistory.html'
     title = 'История заказов'
+    dates = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     queryset = Order.objects.all()
-    dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     def get_queryset(self):
         queryset = super(OrderListView, self).get_queryset()
-        return queryset.filter(user=self.request.user)
+        queryset = Order.objects.filter(user=self.request.user)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super(OrderListView, self).get_context_data()
         context['dates'] = self.dates
         context['orderdates'] = Order.objects.filter(user=self.request.user).annotate(
-            month=TruncMonth('created')).values('month').distinct()
+            month=TruncMonth('created')).values('month').distinct().reverse()
+
         return context
 
 
@@ -91,6 +95,7 @@ class UserProfileView(TitleMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data()
         context['user'] = self.request.user
+        context['cards'] = UserCard.objects.filter(user=self.request.user).order_by('-is_base')
         return context
 
 
@@ -121,17 +126,20 @@ class CreateUserCardView(TitleMixin, CreateView):
     form_class = CreateUserCardForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', args=(self.object.id,))
+        return reverse_lazy('profile', args=(self.request.user.id,))
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CreateUserCardView, self).form_valid(form)
+
 
 def currentorder(request):
     context = {
         'title': "Текущий заказ"
     }
     return render(request, 'main/currentorder.html', context)
+
+
 class UserLoginView(TitleMixin, LoginView):
     template_name = 'users/auth.html'
     form_class = UserLoginForm
@@ -148,6 +156,7 @@ def menu(request):
         'productsWithCategory4': Product.objects.filter(category__name="АВТОРСКИЕ НАПИТКИ"),
         'productsWithCategory5': Product.objects.filter(category__name="К КОФЕ"),
         'productsWithCategory6': Product.objects.filter(category__name="НАША КУХНЯ"),
+        'baskets': Basket.objects.filter(user=request.user)
 
     }
     return render(request, 'main/menu.html', context)
@@ -183,4 +192,38 @@ def basket_deletion(request, product_id):
 def basket_remove(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
+    return redirect(request.META['HTTP_REFERER'])
+
+
+def check_product_in_basket(request, product_id):
+    product = Product.objects.get(id=product_id)
+    return Basket.objects.filter(user=request.user, product=product).exists()
+
+
+@login_required
+def make_base_card(request, card_id):
+    card = UserCard.objects.get(id=card_id)
+    basecards = UserCard.objects.filter(user=request.user, is_base=1).count()
+    if basecards > 0:
+        basecard = UserCard.objects.get(user=request.user, is_base=1)
+        card.is_base = 1
+        basecard.is_base = 0
+        request.user.payment_method = card.protect_number()
+        request.user.save()
+        card.save()
+        basecard.save()
+    elif basecards == 0:
+        card.is_base = 1
+        request.user.payment_method = card.protect_number()
+        request.user.save()
+        card.save()
+    return redirect(request.META['HTTP_REFERER'])
+
+
+def make_cash_payment(request):
+    basecard = UserCard.objects.get(user=request.user, is_base=1)
+    basecard.is_base = 0
+    basecard.save()
+    request.user.payment_method = 'Наличные'
+    request.user.save()
     return redirect(request.META['HTTP_REFERER'])

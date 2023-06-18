@@ -111,15 +111,10 @@ class UserProfileForm(UserChangeForm):
 
 
 class OrderForm(forms.ModelForm):
-    servings = [
-        ('В ресторане', 'В ресторане'),
-        ('С собой', 'С собой'),
-    ]
     addresses = [
         ('Батурина', 'Батурина'),
         ('Ещё какая-то залупа', 'Ещё какая-то залупа'),
     ]
-
     address = forms.CharField(widget=forms.Select(attrs={
         'id': 'regions',
         'class': 'address-select',
@@ -133,7 +128,16 @@ class OrderForm(forms.ModelForm):
             ('В ресторане', 'В ресторане'),
             ('С собой', 'С собой'),
         ]
-        widgets = {'serving': forms.RadioSelect(attrs={'name': 'where-to-eat'}, choices=servings)}
+        BCard = UserCard.base_card
+        methods = [
+            (BCard, BCard),
+            ('СБП', 'СБП'),
+            ('Наличными', 'Наличными'),
+        ]
+        widgets = {
+            'serving': forms.RadioSelect(attrs={'name': 'where-to-eat'}, choices=servings),
+            'payment_method': forms.RadioSelect(attrs={'name': 'where-to-eat'}, choices=methods)
+        }
 
 
 class CreateUserCardForm(forms.ModelForm):
