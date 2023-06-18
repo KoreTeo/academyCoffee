@@ -1,0 +1,143 @@
+.up-line-container {
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    align-items: center;
+}
+
+.personal-up-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0;
+}
+
+.personal-line {
+    border: 2px solid #CACACA;
+}
+
+.main-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.personal-account-left-container {
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-avatar {
+    width: 112px;
+    height: 112px;
+    display: block;
+}
+
+.personal-name {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin: 0 0 49px;
+}
+
+.personal-account-nav-list {
+    display: flex;
+    gap: 18px;
+    flex-direction: column;
+}
+
+.personal-account-nav-list a {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.active-link {
+    pointer-events: none;
+    cursor: default;
+    color: #AB9169;
+    font-weight: bold;
+}
+
+.order-status {
+    margin-bottom: 40px;
+}
+
+.order-info {
+    display: flex;
+    gap: 20px;
+}
+
+.order-info-left-container {
+    display: flex;
+    flex-direction: column;
+    width: 432px;
+    gap: 40px;
+}
+
+.order-item {
+    display: flex;
+    align-items: end;
+}
+
+.order-item-name {
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.order-item-amount {
+    margin-right: auto;
+    font-size: 16px;
+    line-height: 20px;
+    color: #AFAFAF;
+}
+
+.order-item-price {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.order-price {
+    align-self: flex-end;
+    text-decoration-line: overline;
+    text-decoration-color: rgba(202, 202, 202, 0.4);
+    text-decoration-thickness: 2px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+}
+
+.order-info-middle-line {
+    height: auto;
+    border-right: 2px solid rgba(202, 202, 202, 0.4);
+}
+
+.order-info-right-container {
+    display: flex;
+    flex-direction: column;
+    width: 455px;
+    gap: 35px;
+}
+
+.order-info-right-container div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-info-right-container-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.order-info-right-container-data {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: right;
+}

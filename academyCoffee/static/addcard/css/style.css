@@ -42,7 +42,7 @@
     margin-bottom: 10px;
 }
 
-#card-number {
+#id_number {
     text-align: center;
     font-size: 26px;
     line-height: 20px;
@@ -60,7 +60,7 @@
     margin-bottom: 14px;
 }
 
-#card-month, #card-year {
+#id_month, #id_year {
     text-align: center;
     font-size: 16px;
     line-height: 20px;
@@ -69,7 +69,7 @@
     padding: 13px 24px;
 }
 
-#card-month {
+#id_month {
     width: 31px;
     padding: 13px 18px;
 }
@@ -131,11 +131,12 @@
 }
 
 .bind-card-button {
-    background: #E6E6E6;
+    background: #CAF4EF;
     border-radius: 20px;
     width: 701px;
     height: 62px;
     border: none;
     font-size: 26px;
     line-height: 32px;
+    font-weight: 500;
 }
