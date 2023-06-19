@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+import django.core.mail.backends.console
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,3 +141,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51NIYd6JDi4OmLgzaW96mMdvQaUreIhnqlAbt5OppU7lZTm0GQw0SoevSrACt8vBi71i4yDLcDNTaZtMPBy9zDdwY00Up1tkr61'
 STRIPE_SECRET_KEY = 'sk_test_51NIYd6JDi4OmLgzaevcsS36PgfwCcTUTTCXOyP3d7jWhVOa2foRnikEojGy1a6G18IhUICBVuBGtM0C5MDrvkxro00tjN0t3hI'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

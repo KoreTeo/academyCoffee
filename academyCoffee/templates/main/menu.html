@@ -76,10 +76,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets.exists %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -106,10 +128,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets.exists %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -136,10 +180,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets.exists %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -166,10 +232,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets.exists %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -196,10 +284,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets.exists %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -226,10 +336,32 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            <button class="button-to-cart">
-                                <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить в
-                                    корзину</a>
-                            </button>
+                            {% if baskets %}
+                                {% for basket in baskets %}
+                                    {% if basket.product == product %}
+                                        {% comment %}              Настроить стили                {% endcomment %}
+                                        <div class="amount-button">
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                            </button>
+                                            <p>{{ basket.quantity }}</p>
+                                            <button><a class="btn btn-outline-success"
+                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                        </div>
+                                        {% comment %}----------------------------------------------{% endcomment %}
+                                    {% else %}
+                                        <button class="button-to-cart">
+                                            <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                                в корзину</a>
+                                        </button>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <button class="button-to-cart">
+                                    <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
+                                        в корзину</a>
+                                </button>
+                            {% endif %}
                         </div>
                     </li>
                 {% endfor %}

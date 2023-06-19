@@ -40,6 +40,7 @@ class User(AbstractUser):
     region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
     PNumber = PhoneNumberField('Номер телефона', blank=False, null=False, unique=True, region="RU")
     DateOfBirth = models.DateField("День рождения", default=timezone.now)
+    payment_method = models.CharField('Способ оплаты', max_length=20, default='Наличные')
 
     USERNAME_FIELD = "PNumber"
     REQUIRED_FIELDS = ["email"]
@@ -50,10 +51,17 @@ class User(AbstractUser):
 
 class UserCard(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    is_base = models.BooleanField(default=False)
     number = models.DecimalField(max_digits=16, decimal_places=0)
     month = models.DecimalField(max_digits=2, decimal_places=0)
     year = models.DecimalField(max_digits=2, decimal_places=0)
     CVCCode = models.DecimalField(max_digits=3, decimal_places=0)
+
+    def protect_number(self):
+        return int(str(self.number)[-4:])
+
+    def base_card(self):
+        return UserCard.objects.get(user=self.user, is_base=1).protect_number()
 
 
 class BasketQuerySet(models.QuerySet):
@@ -106,6 +114,9 @@ class Order(models.Model):
     status = models.SmallIntegerField(default=CREATED, choices=STATUSES)
     serving = models.CharField('Сервировка', max_length=50)
     address = models.CharField('Адрес', max_length=100)
+    payment_method = models.CharField('Способ оплаты', max_length=20)
 
     def __str__(self):
         return f'Заказ для {self.user}'
+
+

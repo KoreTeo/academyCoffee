@@ -7,196 +7,244 @@
 {% endblock %}
 
 {% block content %}
-<main>
-    <div class="up-line-container">
-        <h2 class="personal-up-title">Личный кабинет</h2>
+    <main>
+        <div class="up-line-container">
+            <h2 class="personal-up-title">Личный кабинет</h2>
             <a class="log-out" href="{% url 'logout' %}">Выйти</a>
-    </div>
-    <div class="personal-line"></div>
-<div class="main-container">
-    <div class="personal-account-left-container">
-        <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112" height="112">
-        <p class="personal-name">{{ user.first_name }}</p>
-        <ul class="personal-account-nav-list">
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link" href="{% url 'currentorder' %}">
-                    Текущий заказ
-                </a>
-            </li>
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link active-link">
-                    Личные данные
-                </a>
-            </li>
-            <li class="personal-account-nav-list-item">
-                <a class="personal-account-nav-link" href="{% url 'orderhistory' %}" >
-                    История заказов
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="personal-account-right-container">
-        <section class="personal-account-info">
-            <div class="change-container">
-                <div class="change-up-container">
-                    <div class="change-up-container-title">
-                        <h3 class="change-title">Имя</h3>
-                        <button id="modalChangeName"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
-                        <div class="modal-change-name">
-                            <div class="modal-change-name-content">
-                                <a class="close-modal-name"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
-                                <p class="modal-change-name-title">Изменить имя</p>
-                                <p class="modal-change-name-hint">Имя</p>
-                                <form action="{% url 'profile' user.id %}" method="post">
-                                    {% csrf_token %}
-                                    <label for="{{ form.first_name.id_for_label }}">
-                                        {{ form.first_name }}
-                                        <div hidden="hidden">
-                                            {{ form.DateOfBirth }}
-                                            {{ form.PNumber }}
-                                            {{ form.region }}
-                                        </div>
-                                        <button id="button-change-name-submit" type="submit">Изменить</button>
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <img class="description-image" src="{% static 'personalaccount/img/account.png' %}">
-                </div>
-                <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-name">{{ user.first_name }}</p>
+        </div>
+        <div class="personal-line"></div>
+        <div class="main-container">
+            <div class="personal-account-left-container">
+                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112"
+                     height="112">
+                <p class="personal-name">{{ user.first_name }}</p>
+                <ul class="personal-account-nav-list">
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="{% url 'currentorder' %}">
+                            Текущий заказ
+                        </a>
+                    </li>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link active-link">
+                            Личные данные
+                        </a>
+                    </li>
+                    <li class="personal-account-nav-list-item">
+                        <a class="personal-account-nav-link" href="{% url 'orderhistory' %}">
+                            История заказов
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="change-container">
-                <div class="change-up-container">
-                    <div class="change-up-container-title">
-                        <h3 class="change-title">Дата рождения</h3>
-                        <button id="modalChangeDate"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
-                        <div class="modal-change-date">
-                            <div class="modal-change-date-content">
-                                <a class="close-modal-date"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
-                                <p class="modal-change-date-title">Изменить дату рождения</p>
-                                <p class="modal-change-date-hint">ДД.ММ.ГГ</p>
-                                <form action="{% url 'profile' user.id %}" method="post">
-                                    {% csrf_token %}
-                                    <label for="{{ form.DateOfBirth.id_for_label }}">
-                                        {{ form.DateOfBirth }}
-                                        <div hidden="hidden">
-                                            {{ form.first_name }}
-                                            {{ form.PNumber }}
-                                            {{ form.region }}
-                                        </div>
-                                        <button id="button-change-name-submit" type="submit">Изменить</button>
-                                    </label>
-                                </form>
+            <div class="personal-account-right-container">
+                <section class="personal-account-info">
+                    <div class="change-container">
+                        <div class="change-up-container">
+                            <div class="change-up-container-title">
+                                <h3 class="change-title">Имя</h3>
+                                <button id="modalChangeName"><img class="button-change"
+                                                                  src="{% static 'personalaccount/img/change_pen.png' %}"
+                                                                  alt="Изменить"></button>
+                                <div class="modal-change-name">
+                                    <div class="modal-change-name-content">
+                                        <a class="close-modal-name"><img
+                                                src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                        <p class="modal-change-name-title">Изменить имя</p>
+                                        <p class="modal-change-name-hint">Имя</p>
+                                        <form action="{% url 'profile' user.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label for="{{ form.first_name.id_for_label }}">
+                                                {{ form.first_name }}
+                                                <div hidden="hidden">
+                                                    {{ form.DateOfBirth }}
+                                                    {{ form.PNumber }}
+                                                    {{ form.region }}
+                                                </div>
+                                                <button id="button-change-name-submit" type="submit">Изменить</button>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+                            <img class="description-image" src="{% static 'personalaccount/img/account.png' %}">
                         </div>
+                        <div class="personal-account-info-line"></div>
+                        <p class="personal-account-info-name">{{ user.first_name }}</p>
                     </div>
-                    <img class="description-image" src="{% static 'personalaccount/img/calendar.png' %}">
-                </div>
-                <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-date">{{ user.DateOfBirth }}</p>
-            </div>
-            <div class="change-container">
-                <div class="change-up-container">
-                    <div class="change-up-container-title">
-                        <h3 class="change-title">Регион</h3>
-                        <button id="modalChangeRegion"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
-                        <div class="modal-change-region">
-                            <div class="modal-change-region-content">
-                                <a class="close-modal-region"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
-                                <p class="modal-change-region-title">Изменить регион</p>
-                                <p class="modal-change-region-hint">Регион</p>
+                    <div class="change-container">
+                        <div class="change-up-container">
+                            <div class="change-up-container-title">
+                                <h3 class="change-title">Дата рождения</h3>
+                                <button id="modalChangeDate"><img class="button-change"
+                                                                  src="{% static 'personalaccount/img/change_pen.png' %}"
+                                                                  alt="Изменить"></button>
+                                <div class="modal-change-date">
+                                    <div class="modal-change-date-content">
+                                        <a class="close-modal-date"><img
+                                                src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                        <p class="modal-change-date-title">Изменить дату рождения</p>
+                                        <p class="modal-change-date-hint">ДД.ММ.ГГ</p>
+                                        <form action="{% url 'profile' user.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label for="{{ form.DateOfBirth.id_for_label }}">
+                                                {{ form.DateOfBirth }}
+                                                <div hidden="hidden">
+                                                    {{ form.first_name }}
+                                                    {{ form.PNumber }}
+                                                    {{ form.region }}
+                                                </div>
+                                                <button id="button-change-name-submit" type="submit">Изменить</button>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="description-image" src="{% static 'personalaccount/img/calendar.png' %}">
+                        </div>
+                        <div class="personal-account-info-line"></div>
+                        <p class="personal-account-info-date">{{ user.DateOfBirth }}</p>
+                    </div>
+                    <div class="change-container">
+                        <div class="change-up-container">
+                            <div class="change-up-container-title">
+                                <h3 class="change-title">Регион</h3>
+                                <button id="modalChangeRegion"><img class="button-change"
+                                                                    src="{% static 'personalaccount/img/change_pen.png' %}"
+                                                                    alt="Изменить"></button>
+                                <div class="modal-change-region">
+                                    <div class="modal-change-region-content">
+                                        <a class="close-modal-region"><img
+                                                src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                        <p class="modal-change-region-title">Изменить регион</p>
+                                        <p class="modal-change-region-hint">Регион</p>
 
-                                <form action="{% url 'profile' user.id %}" method="post">
-                                    {% csrf_token %}
-                                    <label for="{{ form.region.id_for_label }}">
-                                        {{ form.region }}
-                                        <div hidden="hidden">
-                                            {{ form.first_name }}
-                                            {{ form.PNumber }}
-                                            {{ form.DateOfBirth }}
-                                        </div>
-                                        <button id="button-change-name-submit" type="submit">Изменить</button>
-                                    </label>
-                                </form>
+                                        <form action="{% url 'profile' user.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label for="{{ form.region.id_for_label }}">
+                                                {{ form.region }}
+                                                <div hidden="hidden">
+                                                    {{ form.first_name }}
+                                                    {{ form.PNumber }}
+                                                    {{ form.DateOfBirth }}
+                                                </div>
+                                                <button id="button-change-name-submit" type="submit">Изменить</button>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+                            <img class="description-image" src="{% static 'personalaccount/img/planet.png' %}">
                         </div>
+                        <div class="personal-account-info-line"></div>
+                        <p class="personal-account-info-region">г. {{ user.region }}</p>
                     </div>
-                    <img class="description-image" src="{% static 'personalaccount/img/planet.png' %}">
-                </div>
-                <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-region">г. {{ user.region }}</p>
-            </div>
-            <div class="change-container">
-                <div class="change-up-container">
-                    <div class="change-up-container-title">
-                        <h3 class="change-title">Телефон</h3>
-                        <button id="modalChangeNumber"><img class="button-change" src="{% static 'personalaccount/img/change_pen.png' %}" alt="Изменить"></button>
-                        <div class="modal-change-number">
-                            <div class="modal-change-number-content">
-                                <a class="close-modal-number"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
-                                <p class="modal-change-number-title">Изменить номер телефона</p>
-                                <p class="modal-change-number-hint">8xxxxxxxxxx</p>
-                                <form action="{% url 'profile' user.id %}" method="post">
-                                    {% csrf_token %}
-                                    <label for="{{ form.PNumber.id_for_label }}">
-                                        {{ form.PNumber }}
-                                        <div hidden="hidden">
-                                            {{ form.first_name }}
-                                            {{ form.region }}
-                                            {{ form.DateOfBirth }}
-                                        </div>
-                                        <button id="button-change-name-submit" type="submit">Изменить</button>
-                                    </label>
-                                </form>
+                    <div class="change-container">
+                        <div class="change-up-container">
+                            <div class="change-up-container-title">
+                                <h3 class="change-title">Телефон</h3>
+                                <button id="modalChangeNumber"><img class="button-change"
+                                                                    src="{% static 'personalaccount/img/change_pen.png' %}"
+                                                                    alt="Изменить"></button>
+                                <div class="modal-change-number">
+                                    <div class="modal-change-number-content">
+                                        <a class="close-modal-number"><img
+                                                src="{% static 'personalaccount/img/close.svg' %}"></a>
+                                        <p class="modal-change-number-title">Изменить номер телефона</p>
+                                        <p class="modal-change-number-hint">8xxxxxxxxxx</p>
+                                        <form action="{% url 'profile' user.id %}" method="post">
+                                            {% csrf_token %}
+                                            <label for="{{ form.PNumber.id_for_label }}">
+                                                {{ form.PNumber }}
+                                                <div hidden="hidden">
+                                                    {{ form.first_name }}
+                                                    {{ form.region }}
+                                                    {{ form.DateOfBirth }}
+                                                </div>
+                                                <button id="button-change-name-submit" type="submit">Изменить</button>
+                                            </label>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+                            <img class="description-image" src="{% static 'personalaccount/img/messages.png' %}">
                         </div>
+                        <div class="personal-account-info-line"></div>
+                        <p class="personal-account-info-number">{{ user.PNumber.as_national }}</p>
                     </div>
-                    <img class="description-image" src="{% static 'personalaccount/img/messages.png' %}">
-                </div>
-                <div class="personal-account-info-line"></div>
-                <p class="personal-account-info-number">{{ user.PNumber.as_national }}</p>
-            </div>
-        </section>
-        <section class="payment-methods">
-            <h3 class="payment-method-title">
-                Способ оплаты
-            </h3>
-            <div class="payment-method-container">
-                <div class="chosen-method payment-method">
-                    <div class="payment-method-up-container">
-                        <img src="{% static 'personalaccount/img/check.svg' %}" width="21" height="21">
-                        <p>
-                            Основной способ
-                        </p>
-                    </div>
-                    <div class="payment-method-down-container">
-                        <p class="card-number">***5466</p>
-                        <p class="pull-date">04/29</p>
-                        <img src="{% static 'personalaccount/img/mastercard.svg' %}" width="30" height="20">
-                    </div>
-                </div>
-                <div class="payment-method">
-                    <div class="payment-method-up-container">
-                        <a>
-                            Сделать основным
+                </section>
+                <section class="payment-methods">
+                    <h3 class="payment-method-title">
+                        Способ оплаты
+                    </h3>
+                    <div class="payment-method-container">
+
+                        {% for card in cards %}
+                            {% if card.is_base == True %}
+                                <div class="chosen-method payment-method">
+                                    <div class="payment-method-up-container">
+                                        <img src="{% static 'personalaccount/img/check.svg' %}" width="21" height="21">
+                                        <p>
+                                            Основной способ
+                                        </p>
+                                    </div>
+                                    <div class="payment-method-down-container">
+                                        <p class="card-number">***{{ card.protect_number }}</p>
+                                        <p class="pull-date">{{ card.month }}/{{ card.year }}</p>
+                                        <img src="{% static 'personalaccount/img/mastercard.svg' %}" width="30"
+                                             height="20">
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="payment-method">
+                                    <div class="payment-method-up-container">
+                                        <a href="{% url 'make_base_card' card.id %}">
+                                            Сделать основным
+                                        </a>
+                                    </div>
+                                    <div class="payment-method-down-container">
+                                        <p class="card-number">***{{ card.protect_number }}</p>
+                                        <p class="pull-date">{{ card.month }}/{{ card.year }}</p>
+                                        <img src="{% static 'personalaccount/img/mir.png' %}" width="45" height="20">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        {% endfor %}
+                        {% if user.payment_method == 'Наличные' %}
+                            <div class="chosen-method payment-method">
+                                <div class="payment-method-up-container">
+                                    <img src="{% static 'personalaccount/img/check.svg' %}" width="21" height="21">
+                                    <p>
+                                        Основной способ
+                                    </p>
+                                </div>
+                                <div class="payment-method-down-container">
+                                    <p class="card-number">Наличная оплата</p>
+                                    <img src="{% static 'cart/img/cash.svg' %}" width="30"
+                                         height="20">
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="payment-method">
+                                <div class="payment-method-up-container">
+                                    <a href="{% url 'make_cash_payment' %}">
+                                        Сделать основным
+                                    </a>
+                                </div>
+                                <div class="payment-method-down-container">
+                                    <p class="card-number">Наличная оплата</p>
+                                    <img src="{% static 'cart/img/cash.svg' %}" width="45" height="20">
+                                </div>
+                            </div>
+                        {% endif %}
+                        <a class="add-payment-method" href="{% url 'addcart' %}">
+                            <img src="{% static 'personalaccount/img/add-card.svg' %}" width="50" height="50">
+                            <p>Добавить новую карту</p>
                         </a>
                     </div>
-                    <div class="payment-method-down-container">
-                        <p class="card-number">***5135</p>
-                        <p class="pull-date">05/27</p>
-                        <img src="{% static 'personalaccount/img/mir.png' %}" width="45" height="20">
-                    </div>
-                </div>
-                <a class="add-payment-method" href="{% url 'addcart' %}">
-                    <img src="{% static 'personalaccount/img/add-card.svg' %}" width="50" height="50">
-                    <p>Добавить новую карту</p>
-                </a>
+                </section>
             </div>
-        </section>
-    </div>
-</div>
-</main>
+        </div>
+    </main>
     <script src="{% static 'personalaccount/js/script.js' %}"></script>
 {% endblock %}
