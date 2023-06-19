@@ -76,20 +76,20 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>
@@ -128,20 +128,20 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>
@@ -180,20 +180,20 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>
@@ -232,20 +232,20 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>
@@ -284,20 +284,20 @@
                             <p class="price">
                                 {{ product.price }} рублей
                             </p>
-                            {% if baskets.exists %}
+                            {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>
@@ -338,18 +338,18 @@
                             </p>
                             {% if baskets %}
                                 {% for basket in baskets %}
-                                    {% if basket.product == product %}
+                                    {% if basket.product.id == product.id %}
                                         {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_deletion' basket.product_id %}">-</a>
+                                                       href="{% url 'basket_deletion' basket.product.id %}">-</a>
                                             </button>
                                             <p>{{ basket.quantity }}</p>
                                             <button><a class="btn btn-outline-success"
-                                                       href="{% url 'basket_add' basket.product_id %}">+</a></button>
+                                                       href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
                                         {% comment %}----------------------------------------------{% endcomment %}
-                                    {% else %}
+                                    {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
                                                 в корзину</a>

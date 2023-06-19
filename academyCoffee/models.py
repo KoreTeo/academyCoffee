@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
@@ -24,6 +25,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def product_in_basket(self):
+        if Basket.objects.filter().contains(Product):
+            return True
+        else:
+            return False
 
     class Meta:
         verbose_name = 'Товар'
@@ -95,6 +102,12 @@ class Basket(models.Model):
         }
         return basket_item
 
+    def product_in_basket(self):
+        if Basket.objects.filter(user=self.user).contains(self.product):
+            return True
+        else:
+            return False
+
 
 class Order(models.Model):
     CREATED = 0
@@ -118,5 +131,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f'Заказ для {self.user}'
-
-
