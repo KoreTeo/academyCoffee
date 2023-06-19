@@ -11,6 +11,7 @@ urlpatterns = [
     path('account/<int:pk>/', login_required(views.UserProfileView.as_view()), name='profile'),
     path('stocks/', views.stocks, name='stocks'),
     path('registration/', views.UserRegistrationView.as_view(), name='registration'),
+    path('ququ/', views.registration2, name='registration2'),
     path('about/', views.about, name='about'),
     path('addcart/', views.CreateUserCardView.as_view(), name='addcart'),
     path('current/', views.currentorder, name='currentorder'),

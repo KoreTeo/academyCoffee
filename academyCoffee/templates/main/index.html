@@ -92,13 +92,16 @@
                 </li>
             </ul>
         </section>
-        <section class="email-subscribe">
-            <p>Получи скидку <span>25%</span> на первый заказ и получай уведомления о скидках!</p>
-            <form action="">
-                <label>
-                    <input class="email-subscribe-form" type="email" placeholder="email@email.ru">
-                </label>
-            </form>
+        <section class="email-subscribe" style="background: url({% static 'home/img/email-bg.png' %})">
+            <div class="email-subscribe-container">
+                <p>Получи скидку <span>25%</span> на первый заказ и получай уведомления о скидках!</p>
+                <form action="">
+                    <label>
+                        <input class="email-subscribe-form" type="email" placeholder="email@email.ru">
+                    </label>
+                    <button class="email-subscribe-button" type="submit">Подписаться</button>
+                </form>
+            </div>
         </section>
     </main>
 {% endblock %}

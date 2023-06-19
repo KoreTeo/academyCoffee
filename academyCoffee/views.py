@@ -108,6 +108,11 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     title = 'Регистрация'
 
 
+@login_required
+def orderhistory(request):
+    return render(request, 'main/orderhistory.html', {'title': "История заказов"})
+
+
 def stocks(request):
     context = {
         'title': "Акции"
@@ -121,7 +126,7 @@ class CreateUserCardView(TitleMixin, CreateView):
     form_class = CreateUserCardForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', args=(self.request.user.id,))
+        return reverse_lazy('profile', args=(self.object.id,))
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -133,6 +138,13 @@ def currentorder(request):
         'title': "Текущий заказ"
     }
     return render(request, 'main/currentorder.html', context)
+
+def registration2(request):
+    context = {
+        'title': "Регистрация"
+    }
+    return render(request, 'main/registration.html', context)
+
 
 
 class CurrentOrderView(TitleMixin, TemplateView):
