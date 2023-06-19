@@ -73,8 +73,6 @@
     height: 204px;
 }
 
-/* seasonal drinks section */
-
 section {
     width: 1075px;
     margin: 0 auto 65px;
@@ -106,8 +104,8 @@ h2 {
 }
 
 .container-images img {
-    max-height: 170px;
-    max-width: fit-content;
+    min-height: fit-content;
+    min-width: fit-content;
 }
 
 .star-counter {

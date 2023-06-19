@@ -1,0 +1,69 @@
+main {
+    display: flex;
+}
+
+.contacts {
+    width: 356px;
+}
+
+.contacts h2 {
+    width: 150px;
+    padding: 13px 103px;
+    background: #4C4C4C;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.contacts-list {
+    margin: 35px 0 12px;
+}
+
+.contacts-list-item {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    width: 332px;
+    padding-bottom: 25px;
+}
+
+.addresses {
+    width: 874px;
+}
+
+.addresses h2 {
+    width: 112px;
+    padding: 6px 381px 20px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.addresses-city-list {
+    background: #4D4D4D;
+    color: #FFFFFF;
+    padding: 35px 25px;
+    display: flex;
+    gap: 40px
+}
+
+.addresses-city-list-item {
+
+}
+
+.addresses-city-under-list h3 {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
+.addresses-city-under-list-item {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}

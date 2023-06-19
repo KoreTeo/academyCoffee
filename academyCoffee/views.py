@@ -113,11 +113,11 @@ def orderhistory(request):
     return render(request, 'main/orderhistory.html', {'title': "История заказов"})
 
 
-def stocks(request):
+def contacts(request):
     context = {
-        'title': "Акции"
+        'title': "Контакты"
     }
-    return render(request, 'main/stocks.html', context)
+    return render(request, 'main/contacts.html', context)
 
 
 class CreateUserCardView(TitleMixin, CreateView):

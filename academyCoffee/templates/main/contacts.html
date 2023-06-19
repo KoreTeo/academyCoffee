@@ -1,0 +1,115 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'contacts/css/style.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <div class="contacts">
+        <h2>Контакты</h2>
+        <ul class="contacts-list">
+          <li class="contacts-list-item">
+            Сотрудничество: cooperation@coffeeacademy.ru
+          </li>
+          <li class="contacts-list-item">
+            Франчайзинг: franchise@coffeeacademy.ru
+          </li>
+          <li class="contacts-list-item">
+            Отдел кадров: job@coffeeacademy.ru
+          </li>
+          <li class="contacts-list-item">
+            Отдел маркетинга: pr@coffeeacademy.ru
+          </li>
+          <li class="contacts-list-item">
+            Отдел закупок: zakaz@coffeeacademy.ru
+          </li>
+        </ul>
+      </div>
+      <div class="addresses">
+          <h2>Адреса</h2>
+        <ul class="addresses-city-list">
+          <li class="addresses-city-list-item">
+            <ul class="addresses-city-under-list">
+              <h3>Москва</h3>
+              <li class="addresses-city-under-list-item">
+                Аэропорт<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Никитская, 5Д<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Сити<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Тверская, 16<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Никольская, 1<br>
+                +7(499) 152 47 49
+              </li>
+            </ul>
+          </li>
+          <li class="addresses-city-list-item">
+            <ul class="addresses-city-under-list">
+                <h3>Санкт-Петербург</h3>
+              <li class="addresses-city-under-list-item">
+                Аэропорт<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Пушкинская, 28<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Репина, 4Г<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Некрасова, 97<br>
+                +7(499) 152 47 49
+              </li>
+            </ul>
+          </li>
+          <li class="addresses-city-list-item">
+            <ul class="addresses-city-under-list">
+                <h3>Красноярск</h3>
+              <li class="addresses-city-under-list-item">
+                Мира, 96<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Батурина, 13<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                9 Мая, 22<br>
+                +7(499) 152 47 49
+              </li>
+            </ul>
+          </li>
+          <li class="addresses-city-list-item">
+            <ul class="addresses-city-under-list">
+                <h3>Новосибирск</h3>
+              <li class="addresses-city-under-list-item">
+                Ленина, 104<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Гоголя, 73<br>
+                +7(499) 152 47 49
+              </li>
+              <li class="addresses-city-under-list-item">
+                Титова, 52<br>
+                +7(499) 152 47 49
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+</main>
+{% endblock %}
