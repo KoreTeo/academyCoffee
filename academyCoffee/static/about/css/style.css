@@ -1,0 +1,181 @@
+.coffee-habit {
+    width: 1220px;
+    display: flex;
+    gap: 17px;
+    margin: 0 auto 65px;
+}
+
+.three-coffee {
+    width: 551px;
+    height: 551px;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 133.4%;
+    color: rgba(0, 0, 0, 0.13);
+    transform: rotate(-90deg);
+}
+
+.right-habit h2 {
+    margin-top: 42px;
+    margin-bottom: 18px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 118.9%;
+}
+
+.right-habit p {
+    margin-bottom: 57px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.short-info {
+    width: 100vw;
+    margin: 0 auto 65px;
+    display: flex;
+    background: rgba(202, 202, 202, 0.17);
+}
+
+.short-info-container {
+    margin: 0 auto;
+    width: 1119px;
+    display: flex;
+    gap: 120px;
+}
+
+.short-info-item {
+    display: flex;
+    align-items: center;
+}
+
+.short-info-big {
+    font-weight: 700;
+    font-size: 120px;
+    line-height: 146px;
+    color: rgba(0, 0, 0, 0.75);
+    margin-right: 10px;
+}
+
+.short-info-small {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+}
+
+.coffee-in-your-pocket {
+    width: 871px;
+    margin: 0 auto 65px;
+    display: flex;
+    gap: 45px;
+}
+
+.coffee-in-your-pocket-left-container h2 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 55px;
+}
+
+.coffee-in-your-pocket-left-container p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 55px;
+}
+
+.cooperation-offer {
+    width: 776px;
+    margin: 0 auto;
+}
+
+.cooperation-offer h2 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 65px;
+}
+
+.cooperation-form-container {
+    padding: 80px 70px;
+    width: 491px;
+    background: rgba(206, 206, 206, 0.27);
+    border-radius: 55px;
+    margin: 0 auto 65px;
+}
+
+.cooperation-form-container label {
+    margin-bottom: 15px;
+    display: block;
+}
+
+.radio-button-container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.radio-button-container, .last {
+    margin-bottom: 30px;
+}
+
+.cooperation-form-container .radio-button-container label {
+    margin: 0;
+}
+
+.cooperation-form-container input {
+    margin-bottom: 30px;
+    display: block;
+}
+
+.cooperation-form-container select {
+    margin-bottom: 30px;
+    display: block;
+}
+
+input[type="radio"] {
+    background: #FFFFFF;
+    border: 1px solid #B4B4B4;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+input[type="text"] {
+    background: #FFFFFF;
+    border: 1px solid #B4B4B4;
+    border-radius: 15px;
+    width: 491px;
+    height: 45px;
+    padding: 5px 10px;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+#text-content-form {
+    min-width: 491px;
+    min-height: 120px;
+    background: #FFFFFF;
+    border: 1px solid #B4B4B4;
+    border-radius: 15px;
+    padding: 5px 10px;
+    max-width: 491px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.button-submit-cooperation {
+    margin: 0 88.5px;
+    width: 600px;
+    height: 60px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.71);
+    border-radius: 15px;
+}

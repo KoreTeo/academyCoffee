@@ -1,13 +1,79 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block style %}
+    <link rel="stylesheet" href="{% static 'about/css/style.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <section class="coffee-habit">
+        <img src="{% static 'about/img/three_coffee.png' %}">
+        <img src="{% static 'about/img/coffee_about_1.png' %}" alt="CoffeeImg1" width="495" height="550">
+        <div class="right-habit">
+          <h2>МЕНЯЕМ КОФЕЙНЫЕ ПРИВЫЧКИ</h2>
+          <p>Академия Кофе - это не просто кофейня, это философия, которой мы делимся с каждым гостем.</p>
+          <img src="{% static 'about/img/coffee_about_2.png' %}" alt="CoffeeImg2" width="630" height="347">
+        </div>
+    </section>
+  <section class="short-info">
+    <div class="short-info-container">
+      <div class="short-info-item">
+        <p class="short-info-big">9</p>
+        <p class="short-info-small">лет <br>на рынке</p>
+      </div>
+      <div class="short-info-item">
+        <p class="short-info-big">>30</p>
+        <p class="short-info-small">точек по всей стране</p>
+      </div>
+      <div class="short-info-item">
+        <p class="short-info-big">15</p>
+        <p class="short-info-small">видов кофейных зерен</p>
+      </div>
+    </div>
+  </section>
+  <section class="coffee-in-your-pocket">
+      <div class="coffee-in-your-pocket-left-container">
+        <h2>Академия Кофе в твоем кармане</h2>
+          <p>Теперь у вас есть возможность заказывать кофе в три клика, копить бонусы, получать подарки и быть в курсе всех спецпредложений и событий в кофейнях. Оформляйте ваш заказ к удобному времени находясь в кофейне, сидя в офисе или на ближайшем светофоре. Покупка станет еще быстрее благодаря возможности привязать банковскую карту.</p>
+          <div class="download-on-markets">
+              <img src="{% static 'about/img/appstore.png' %}" alt="AppStore" width="177" height="54">
+              <img src="{% static 'about/img/googleplay.png' %}" alt="GooglePlay" width="177" height="54">
+          </div>
+      </div>
+    <img src="{% static 'about/img/app_phone.png' %}" alt="Phone">
+  </section>
+  <section class="cooperation-offer">
+    <h2>Отправьте предложение на сотрудничество</h2>
+    <form>
+      <div class="cooperation-form-container">
+        <label>Тема</label>
+          <input type="text">
+        <label>Имя</label>
+          <input type="text">
+        <label>Город</label>
+            <div class="radio-button-container">
+                <input type="radio" id="Mw" name="city">
+                <label for="Mw">Москва</label>
+            </div>
+            <div class="radio-button-container">
+                <input type="radio" id="SPB" name="city">
+                <label for="SPB">Санкт-Петербург</label>
+            </div>
+            <div class="radio-button-container">
+                <input type="radio" id="Krs" name="city">
+                <label for="Krs">Красноярск</label>
+            </div>
+            <div class="radio-button-container last">
+                <input type="radio" id="Other" name="city">
+                <label for="Other">Другой</label>
+            </div>
+          <label for="text-content-form">Текст</label>
+          <textarea id="text-content-form"></textarea>
+        <label>Эл.почта</label>
+          <input type="text">
+      </div>
+      <button class="button-submit-cooperation" type="submit">Отправить</button>
+    </form>
+  </section>
+</main>
+{% endblock %}

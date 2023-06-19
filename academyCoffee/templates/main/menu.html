@@ -131,7 +131,6 @@
                             {% if baskets %}
                                 {% for basket in baskets %}
                                     {% if basket.product.id == product.id %}
-                                        {% comment %}              Настроить стили                {% endcomment %}
                                         <div class="amount-button">
                                             <button><a class="btn btn-outline-success"
                                                        href="{% url 'basket_deletion' basket.product.id %}">-</a>
@@ -140,7 +139,6 @@
                                             <button><a class="btn btn-outline-success"
                                                        href="{% url 'basket_add' basket.product.id %}">+</a></button>
                                         </div>
-                                        {% comment %}----------------------------------------------{% endcomment %}
                                     {% elif basket.product.id != product.id %}
                                         <button class="button-to-cart">
                                             <a class="btn btn-outline-success" href="{% url 'basket_add' product.id %}">Добавить
