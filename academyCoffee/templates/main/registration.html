@@ -14,54 +14,55 @@
 <body>
 <main>
     <div class="main-container">
-
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                 style="margin-top: 50px;">
+                {{ form.errors }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
         <div class="up-container">
             <h2>Регистрация</h2>
             <a href="{% url 'home' %}" class="return"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
         </div>
-        <form action="{% url 'login' %}" method="post">
+        <form action="{% url 'registration' %}" method="post">{% csrf_token %}
             <div>
                 <div class="form-wide-container">
                     <div>
-                        <label for="name">Имя*</label>
-                        <input id="name" type="text">
+                        <label for="{{ form.first_name.id_for_label }}">Имя*</label>
+                        {{ form.first_name }}
                     </div>
                     <div>
-                        <label for="phone">Номер телефона*</label>
-                        <input id="phone" type="text">
+                        <label for="{{ form.PNumber.id_for_label }}">Номер телефона*</label>
+                        {{ form.PNumber }}
                     </div>
                 </div>
-                <label for="email">Почта</label>
-                <input class="email-input" id="email" type="text">
+                <label for="{{ form.email.id_for_label }}">Почта</label>
+                {{ form.email }}
                 <div class="form-wide-container">
                     <div>
-                        <label for="password">Пароль*</label>
-                        <input id="password" type="text">
+                        <label for="{{ form.password1.id_for_label }}">Пароль*</label>
+                        {{ form.password1 }}
                     </div>
                     <div>
-                        <label for="birthday">Дата рождения (ДД.ММ.ГГГГ)</label>
-                        <input id="birthday" type="text">
+                        <label for="{{ form.DateOfBirth.id_for_label }}">Дата рождения (ДД.ММ.ГГГГ)</label>
+                        {{ form.DateOfBirth }}
                     </div>
                     <div>
-                        <label for="password_repeat">Повторите пароль*</label>
-                        <input id="password_repeat" type="text">
+                        <label for="{{ form.password2.id_for_label }}">Повторите пароль*</label>
+                        {{ form.password2 }}
                     </div>
                     <div>
-                        <label for="region">Регион</label>
-                        <select id="region">
-                            <option>
-                                Красноярск
-                            </option>
-                            <option>
-                                Новосибирск
-                            </option>
-                        </select>
+                        <label for="{{ form.region.id_for_label }}">Регион</label>
+                        {{ form.region }}
                     </div>
                 </div>
             </div>
             <button type="submit">Зарегистрироваться</button>
         </form>
-        <a class="to-registration" href="{% url 'registration' %}">Войти в аккаунт</a>
+        <a class="to-registration" href="{% url 'login' %}">Войти в аккаунт</a>
     </div>
 </main>
 </body>

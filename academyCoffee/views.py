@@ -101,7 +101,7 @@ class UserProfileView(TitleMixin, UpdateView):
 
 class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     model = User
-    template_name = 'users/register.html'
+    template_name = 'main/registration.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('login')
     success_message = "Вы успешно зарегестрированы!"
@@ -126,7 +126,7 @@ class CreateUserCardView(TitleMixin, CreateView):
     form_class = CreateUserCardForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', args=(self.object.id,))
+        return reverse_lazy('profile', args=(self.request.user.id,))
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -139,6 +139,7 @@ def currentorder(request):
     }
     return render(request, 'main/currentorder.html', context)
 
+
 def registration2(request):
     context = {
         'title': "Регистрация"
@@ -146,10 +147,10 @@ def registration2(request):
     return render(request, 'main/registration.html', context)
 
 
-
 class CurrentOrderView(TitleMixin, TemplateView):
     template_name = 'main/currentorder.html'
     title = "Текущий заказ"
+
     def get_context_data(self):
         context = super(CurrentOrderView, self).get_context_data()
         context['lastorder'] = Order.objects.filter(user=self.request.user).last()
