@@ -19,7 +19,6 @@
 
 .main-container{
     display: flex;
-    justify-content: space-between;
     margin-top: 30px;
 }
 
@@ -27,6 +26,7 @@
     width: 255px;
     display: flex;
     flex-direction: column;
+    margin-right: 90px;
 }
 
 .personal-avatar {
@@ -68,7 +68,8 @@
 
 .months-list {
     display: flex;
-    gap: 110px
+    gap: 110px;
+    flex-wrap: wrap;
 }
 
 .months-list-item {
@@ -124,18 +125,4 @@
     width: 386px;
     border-bottom: 1px solid #CACACA;
     margin: 30px 0;
-}
-
-.right-arrow-button, .left-arrow-button {
-    background: none;
-    border: none;
-}
-
-.left-arrow-button {
-    transform: rotate(180deg);
-    margin-right: 10px;
-}
-
-.right-arrow-button {
-    margin-left: 10px;
 }
