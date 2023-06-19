@@ -132,6 +132,13 @@ def currentorder(request):
         'title': "Текущий заказ"
     }
     return render(request, 'main/currentorder.html', context)
+
+def registration2(request):
+    context = {
+        'title': "Регистрация"
+    }
+    return render(request, 'main/registration.html', context)
+
 class UserLoginView(TitleMixin, LoginView):
     template_name = 'users/auth.html'
     form_class = UserLoginForm

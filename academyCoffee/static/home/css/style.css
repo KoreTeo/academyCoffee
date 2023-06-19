@@ -199,11 +199,20 @@
 /*email subscribe section*/
 
 .email-subscribe {
-    width: 418px;
+    margin-bottom: -65px;
+    height: 352px;
+    width: auto;
+    background: #38B9A9;
+    padding-top: 53px;
+}
+
+.email-subscribe-container {
+    width: 426px;
+    height: 216px;
     margin: 0 auto;
-    border: 3px solid #000000;
-    border-radius: 49px;
-    padding: 30px 41px 36px;
+    background: #FFFFFF;
+    border-radius: 31px;
+    padding: 41px 108px;
 }
 
 .email-subscribe p {
@@ -228,4 +237,23 @@
     font-size: 20px;
     line-height: 24px;
     text-align: justify;
+    margin-bottom: 15px;
+}
+
+.email-subscribe-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-subscribe-button {
+    display: block;
+    background: rgba(72, 212, 196, 0.29);
+    border-radius: 40px;
+    width: 396px;
+    height: 42px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    border: none;
 }

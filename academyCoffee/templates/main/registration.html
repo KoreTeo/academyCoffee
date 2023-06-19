@@ -1,0 +1,68 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>{{ title }}</title>
+    <link href="{% static 'registration/css/style.css' %}" rel="stylesheet"/>
+</head>
+<body>
+<main>
+    <div class="main-container">
+
+        <div class="up-container">
+            <h2>Регистрация</h2>
+            <a href="{% url 'home' %}" class="return"><img src="{% static 'personalaccount/img/close.svg' %}"></a>
+        </div>
+        <form action="{% url 'login' %}" method="post">
+            <div>
+                <div class="form-wide-container">
+                    <div>
+                        <label for="name">Имя*</label>
+                        <input id="name" type="text">
+                    </div>
+                    <div>
+                        <label for="phone">Номер телефона*</label>
+                        <input id="phone" type="text">
+                    </div>
+                </div>
+                <label for="email">Почта</label>
+                <input class="email-input" id="email" type="text">
+                <div class="form-wide-container">
+                    <div>
+                        <label for="password">Пароль*</label>
+                        <input id="password" type="text">
+                    </div>
+                    <div>
+                        <label for="birthday">Дата рождения (ДД.ММ.ГГГГ)</label>
+                        <input id="birthday" type="text">
+                    </div>
+                    <div>
+                        <label for="password_repeat">Повторите пароль*</label>
+                        <input id="password_repeat" type="text">
+                    </div>
+                    <div>
+                        <label for="region">Регион</label>
+                        <select id="region">
+                            <option>
+                                Красноярск
+                            </option>
+                            <option>
+                                Новосибирск
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <a class="to-registration" href="{% url 'registration' %}">Войти в аккаунт</a>
+    </div>
+</main>
+</body>
+</html>
