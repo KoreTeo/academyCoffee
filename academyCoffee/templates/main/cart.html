@@ -124,12 +124,8 @@
                                 Промокод
                             </p>
                             <div class="promo-code-area">
-                                <label>
-                                    <input class="promo-code-input" rel="">
-                                    <button class="promo-code-button" rel="submit">
-                                        <img src="{% static 'cart/img/check_mark.png' %}" width="18" height="13"
-                                             alt="Применить">
-                                    </button>
+                                <label for="{{ form.promocode_name.id_for_label }}">
+                                    {{ form.promocode_name }}
                                 </label>
                             </div>
                         </div>

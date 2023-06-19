@@ -4,7 +4,7 @@ from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
 from phonenumber_field.modelfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from academyCoffee.models import User, Order, UserCard
+from academyCoffee.models import User, Order, UserCard, EmailSubscribe
 
 
 class UserLoginForm(AuthenticationForm):
@@ -110,10 +110,13 @@ class OrderForm(forms.ModelForm):
         'class': 'address-select',
         'placeholder': 'Выберите город',
     }, choices=addresses))
+    promocode_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'promo-code-input'
+    }))
 
     class Meta:
         model = Order
-        fields = ('address', 'serving')
+        fields = ('address', 'serving', 'promocode_name')
         servings = [
             ('В ресторане', 'В ресторане'),
             ('С собой', 'С собой'),
@@ -147,3 +150,13 @@ class CreateUserCardForm(forms.ModelForm):
     class Meta:
         model = UserCard
         fields = ('number', 'month', 'year', 'CVCCode')
+
+
+class SubscribeForm(forms.ModelForm):
+    email = forms.CharField(widget=forms.EmailInput(attrs={
+        'class': 'email-subscribe-form'
+    }))
+
+    class Meta:
+        model = EmailSubscribe
+        fields = ('email',)

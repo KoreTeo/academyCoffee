@@ -9,11 +9,12 @@ from django.views.generic.list import ListView
 from django.conf import settings
 from academyCoffee.common.views import TitleMixin
 from http import HTTPStatus
-from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm
-from .models import Basket, Product, User, Order, UserCard
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm, SubscribeForm
+from .models import Basket, Product, User, Order, UserCard, EmailSubscribe
 import stripe
 from django.db.models.functions import TruncMonth
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -36,10 +37,16 @@ class OrderCreateView(TitleMixin, CreateView):
 
     def form_valid(self, form):
         baskets = Basket.objects.filter(user=self.request.user)
+        promocode_name = form.cleaned_data["promocode_name"]
+        if promocode_name == "СКИДКА":
+            stock_sum = float(sum(basket.sum() for basket in baskets)) * 0.75
+        else:
+            stock_sum = float(sum(basket.sum() for basket in baskets))
         form.instance.payment_method = self.request.user.payment_method
         form.instance.basket_history = {
             'purchase_products': [basket.de_json() for basket in baskets],
-            'total_sum': float(sum(basket.sum() for basket in baskets))
+            'total_sum': float(sum(basket.sum() for basket in baskets)),
+            'stock_sum': stock_sum
         }
         baskets.delete()
         form.instance.user = self.request.user
@@ -69,18 +76,6 @@ class OrderListView(TitleMixin, ListView):
             month=TruncMonth('created')).values('month').distinct().reverse()
 
         return context
-
-
-class IndexView(TitleMixin, TemplateView):
-    template_name = 'main/index.html'
-    title = 'Академия кофе'
-
-
-def about(request):
-    context = {
-        'title': "О нас"
-    }
-    return render(request, 'main/about.html', context)
 
 
 class UserProfileView(TitleMixin, UpdateView):
@@ -138,13 +133,6 @@ def currentorder(request):
         'title': "Текущий заказ"
     }
     return render(request, 'main/currentorder.html', context)
-
-
-def registration2(request):
-    context = {
-        'title': "Регистрация"
-    }
-    return render(request, 'main/registration.html', context)
 
 
 class CurrentOrderView(TitleMixin, TemplateView):
@@ -244,3 +232,45 @@ def make_cash_payment(request):
     request.user.payment_method = 'Наличные'
     request.user.save()
     return redirect(request.META['HTTP_REFERER'])
+
+
+def subscibe(request):
+    if request.method == 'POST':
+        form = SubscribeForm(data=request.POST)
+        if form.is_valid():
+            send_mail(
+                "Subject here",
+                "Here is the message.",
+                "st0recoffee@yandex.ru",
+                [request.POST.get('email')],
+                fail_silently=False,
+            )
+    else:
+        form = SubscribeForm()
+    context = {'form': form}
+    return render(request, 'main/index.html', context)
+
+
+class IndexView(TitleMixin, CreateView):
+    model = EmailSubscribe
+    template_name = 'main/index.html'
+    title = 'Академия кофе'
+    form_class = SubscribeForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        send_mail(
+            subject="Подписка",
+            message="Вы успешно подписались на обновления. Так же ваш промокод на первую покупку -СКИДКА- со скидкой 25%",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[self.request.POST.get('email',)],
+            fail_silently=False,
+        )
+        return super(IndexView, self).form_valid(form)
+
+
+def about(request):
+    context = {
+        'title': "О нас"
+    }
+    return render(request, 'main/about.html', context)

@@ -128,6 +128,16 @@ class Order(models.Model):
     serving = models.CharField('Сервировка', max_length=50)
     address = models.CharField('Адрес', max_length=100)
     payment_method = models.CharField('Способ оплаты', max_length=20)
+    promocode_name = models.CharField('Промокод', max_length=20, blank=True, null=True)
 
     def __str__(self):
         return f'Заказ для {self.user}'
+
+
+class Promocode(models.Model):
+    name = models.CharField('Промокод', max_length=20)
+    stock = models.PositiveSmallIntegerField(default=25, max_length=3)
+
+
+class EmailSubscribe(models.Model):
+    email = models.CharField('Почта', max_length=50)

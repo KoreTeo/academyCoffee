@@ -143,4 +143,9 @@ STRIPE_PUBLIC_KEY = 'pk_test_51NIYd6JDi4OmLgzaW96mMdvQaUreIhnqlAbt5OppU7lZTm0GQw
 STRIPE_SECRET_KEY = 'sk_test_51NIYd6JDi4OmLgzaevcsS36PgfwCcTUTTCXOyP3d7jWhVOa2foRnikEojGy1a6G18IhUICBVuBGtM0C5MDrvkxro00tjN0t3hI'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'st0recoffee@yandex.ru'
+EMAIL_HOST_PASSWORD = 'mdhcwkeirvoofwqq'
+EMAIL_USE_SSL = True
+

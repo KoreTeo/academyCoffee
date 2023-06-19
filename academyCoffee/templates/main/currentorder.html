@@ -56,7 +56,10 @@
                                 <p class="order-item-price">{{ product.price }} </p>
                             </div>
                         {% endfor %}
-                        <p class="order-price">{{ lastorder.basket_history.total_sum }} руб.</p>
+                        {% if lastorder.promocode_name == 'СКИДКА' %}
+                            <p class="order-price"><s>{{ lastorder.basket_history.total_sum }} руб.</s></p>
+                            <p class="order-price" >{{ lastorder.basket_history.stock_sum }} руб.</p>
+                        {% endif %}
                     </div>
                     <div class="order-info-middle-line"></div>
                     <div class="order-info-right-container">

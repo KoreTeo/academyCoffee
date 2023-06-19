@@ -95,9 +95,9 @@
         <section class="email-subscribe" style="background: url({% static 'home/img/email-bg.png' %})">
             <div class="email-subscribe-container">
                 <p>Получи скидку <span>25%</span> на первый заказ и получай уведомления о скидках!</p>
-                <form action="">
-                    <label>
-                        <input class="email-subscribe-form" type="email" placeholder="email@email.ru">
+                <form action="{% url 'home' %}" method="post">{% csrf_token %}
+                    <label for="{{ form.email.id_for_label }}">
+                        {{ form.email }}
                     </label>
                     <button class="email-subscribe-button" type="submit">Подписаться</button>
                 </form>
