@@ -9,8 +9,9 @@ from django.views.generic.list import ListView
 from django.conf import settings
 from academyCoffee.common.views import TitleMixin
 from http import HTTPStatus
-from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm, SubscribeForm
-from .models import Basket, Product, User, Order, UserCard, EmailSubscribe
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm, OrderForm, CreateUserCardForm, SubscribeForm, \
+    OfferForCooperationForm
+from .models import Basket, Product, User, Order, UserCard, EmailSubscribe, OfferForCooperation
 import stripe
 from django.db.models.functions import TruncMonth
 from django.core.paginator import Paginator
@@ -263,7 +264,7 @@ class IndexView(TitleMixin, CreateView):
             subject="Подписка",
             message="Вы успешно подписались на обновления. Так же ваш промокод на первую покупку -СКИДКА- со скидкой 25%",
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[self.request.POST.get('email',)],
+            recipient_list=[self.request.POST.get('email', )],
             fail_silently=False,
         )
         return super(IndexView, self).form_valid(form)
@@ -274,3 +275,21 @@ def about(request):
         'title': "О нас"
     }
     return render(request, 'main/about.html', context)
+
+
+class AboutView(TitleMixin, CreateView):
+    model = OfferForCooperation
+    template_name = 'main/about.html'
+    success_url = reverse_lazy('about')
+    form_class = OfferForCooperationForm
+    title = 'О нас'
+
+    def form_valid(self, form):
+        send_mail(
+            subject="Предложение",
+            message="Вы успешно отправили предложение. Как только мы его рассмотрим, мы с вами свяжемся ",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[self.request.POST.get('email',)],
+            fail_silently=False,
+        )
+        return super(AboutView, self).form_valid(form)

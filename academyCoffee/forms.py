@@ -4,7 +4,7 @@ from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
 from phonenumber_field.modelfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from academyCoffee.models import User, Order, UserCard, EmailSubscribe
+from academyCoffee.models import User, Order, UserCard, EmailSubscribe, OfferForCooperation
 
 
 class UserLoginForm(AuthenticationForm):
@@ -160,3 +160,31 @@ class SubscribeForm(forms.ModelForm):
     class Meta:
         model = EmailSubscribe
         fields = ('email',)
+
+
+class OfferForCooperationForm(forms.ModelForm):
+    email = forms.CharField(widget=forms.EmailInput(attrs={
+        'class': 'promo-code-input'
+    }))
+    subject = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'promo-code-input'
+    }))
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'promo-code-input'
+    }))
+    text = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'promo-code-input'
+    }))
+
+    class Meta:
+        model = OfferForCooperation
+        regions = [
+            ('Красноярск', 'Красноярск'),
+            ('Москва', 'Москва'),
+            ('Санкт-Петербург', 'Санкт-Петербург'),
+            ('Новосибирск', 'Новосибирск'),
+        ]
+        widgets = {
+            'region': forms.RadioSelect(attrs={'name': 'city'}, choices=regions),
+        }
+        fields = ('email', 'region', 'subject', 'name', 'text')

@@ -136,8 +136,22 @@ class Order(models.Model):
 
 class Promocode(models.Model):
     name = models.CharField('Промокод', max_length=20)
-    stock = models.PositiveSmallIntegerField(default=25, max_length=3)
+    stock = models.PositiveSmallIntegerField(default=25)
 
 
 class EmailSubscribe(models.Model):
     email = models.CharField('Почта', max_length=50)
+
+
+class OfferForCooperation(models.Model):
+    subject = models.CharField(max_length=50)
+    name = models.CharField('Имя', max_length=15)
+    regions = [
+        ('Красноярск', 'Красноярск'),
+        ('Москва', 'Москва'),
+        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Новосибирск', 'Новосибирск'),
+    ]
+    region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
+    text = models.TextField()
+    email = models.EmailField('Почта', max_length=50)
