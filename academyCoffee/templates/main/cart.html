@@ -72,7 +72,6 @@
                 </div>
             {% endif %}
             <div class="payment-container">
-
                 <div class="payment-method">
                     <h3 class="payment-method-titles">Способ оплаты</h3>
                     <div class="chosen-method">
@@ -123,11 +122,9 @@
                             <p>
                                 Промокод
                             </p>
-                            <div class="promo-code-area">
                                 <label for="{{ form.promocode_name.id_for_label }}">
                                     {{ form.promocode_name }}
                                 </label>
-                            </div>
                         </div>
                         <div class="total-line-last"></div>
                         <p id="final-price">{{ baskets.total_sum }} руб.</p>

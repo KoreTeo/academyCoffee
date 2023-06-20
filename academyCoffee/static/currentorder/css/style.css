@@ -102,11 +102,24 @@
     line-height: 24px;
 }
 
+.order-price-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
 .order-price {
     align-self: flex-end;
     text-decoration-line: overline;
     text-decoration-color: rgba(202, 202, 202, 0.4);
     text-decoration-thickness: 2px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+}
+.order-price-new {
+    align-self: flex-end;
     height: 30px;
     font-weight: 500;
     font-size: 26px;

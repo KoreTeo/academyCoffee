@@ -57,8 +57,12 @@
                             </div>
                         {% endfor %}
                         {% if lastorder.promocode_name == 'СКИДКА' %}
-                            <p class="order-price"><s>{{ lastorder.basket_history.total_sum }} руб.</s></p>
-                            <p class="order-price" >{{ lastorder.basket_history.stock_sum }} руб.</p>
+                            <div class="order-price-container">
+                                <p class="order-price-new" >{{ lastorder.basket_history.stock_sum }} руб.</p>
+                                <p class="order-price"><s>{{ lastorder.basket_history.total_sum }} руб.</s></p>
+                            </div>
+                            {% else %}
+                            <p class="order-price">{{ lastorder.basket_history.total_sum }} руб.</p>
                         {% endif %}
                     </div>
                     <div class="order-info-middle-line"></div>
