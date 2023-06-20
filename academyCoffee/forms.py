@@ -102,8 +102,9 @@ class UserProfileForm(UserChangeForm):
 
 class OrderForm(forms.ModelForm):
     addresses = [
-        ('Батурина', 'Батурина'),
-        ('Ещё какая-то залупа', 'Ещё какая-то залупа'),
+        ('Мира, 96', 'Мира, 96'),
+        ('Батурина, 13', 'Батурина, 13'),
+        ('9 Мая, 22', '9 Мая, 22'),
     ]
     address = forms.CharField(widget=forms.Select(attrs={
         'id': 'regions',

@@ -56,6 +56,7 @@ class OrderCreateView(TitleMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(OrderCreateView, self).get_context_data()
         context['baskets'] = Basket.objects.filter(user=self.request.user)
+        context['card'] = UserCard.objects.filter(user=self.request.user).order_by('-is_base').first()
         return context
 
 

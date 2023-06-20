@@ -39,11 +39,11 @@
             <div class="personal-account-right-container">
                 <div class="order-status">
                     <!--Тут по состоянию заказа нужно сделать-->
-                    {% if true %}
+                    {% if lastorder.status == 0 %}
                         <img src="{% static 'currentorder/img/оформление.png' %}" alt="Оформление заказа">
-                    {% elif false %}
+                    {% elif lastorder.status == 1 %}
                         <img src="{% static 'currentorder/img/готовим.png' %}" alt="Заказ готовится">
-                    {% else %}
+                    {% elif lastorder.status == 2 %}
                         <img src="{% static 'currentorder/img/готово.png' %}" alt="Заказ готов">
                     {% endif %}
                 </div>

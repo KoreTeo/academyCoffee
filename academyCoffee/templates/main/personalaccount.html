@@ -190,7 +190,9 @@
                                     <div class="payment-method-down-container">
                                         <p class="card-number">***{{ card.protect_number }}</p>
                                         <p class="pull-date">{{ card.month }}/{{ card.year }}</p>
-                                        <img src="{% static 'personalaccount/img/mastercard.svg' %}" width="30"
+                                        <img src="
+                                                {% if card.first_number == 5 %}{% static 'personalaccount/img/mastercard.svg' %}{% elif card.first_number == 2 %}{% static 'personalaccount/img/mir.png' %}{% elif card.first_number == 4 %}{% static 'addcard/img/visa.png' %}{% else %}{% static 'addcard/img/visa.png' %}{% endif %}"
+                                             width="30"
                                              height="20">
                                     </div>
                                 </div>
@@ -204,7 +206,9 @@
                                     <div class="payment-method-down-container">
                                         <p class="card-number">***{{ card.protect_number }}</p>
                                         <p class="pull-date">{{ card.month }}/{{ card.year }}</p>
-                                        <img src="{% static 'personalaccount/img/mir.png' %}" width="45" height="20">
+                                        <img src="
+                                                {% if card.first_number == 5 %}{% static 'personalaccount/img/mastercard.svg' %}{% elif card.first_number == 2 %}{% static 'personalaccount/img/mir.png' %}{% elif card.first_number == 4 %}{% static 'addcard/img/visa.png' %}{% else %}{% static 'addcard/img/visa.png' %}{% endif %}"
+                                             width="45" height="20">
                                     </div>
                                 </div>
                             {% endif %}

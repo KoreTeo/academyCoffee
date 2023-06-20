@@ -68,6 +68,9 @@ class UserCard(models.Model):
     def protect_number(self):
         return int(str(self.number)[-4:])
 
+    def first_number(self):
+        return int(str(self.number)[:1])
+
     def base_card(self):
         return UserCard.objects.get(user=self.user, is_base=1).protect_number()
 

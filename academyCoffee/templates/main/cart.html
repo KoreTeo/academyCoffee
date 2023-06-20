@@ -81,7 +81,7 @@
                                  width="47" height="28">
                             <p>Наличная оплата</p>
                         {% else %}
-                            <img class="chosen-method-image" src="{% static 'cart/img/mastercard.png' %}"
+                            <img class="chosen-method-image" src="{% if card.first_number == 5 %}{% static 'personalaccount/img/mastercard.svg' %}{% elif card.first_number == 2 %}{% static 'personalaccount/img/mir.png' %}{% elif card.first_number == 4 %}{% static 'addcard/img/visa.png' %}{% else %}{% static 'addcard/img/visa.png' %}{% endif %}"
                                  alt="MasterCard"
                                  width="47" height="28">
                             <p>***{{ user.payment_method }}</p>
