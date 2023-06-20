@@ -112,7 +112,7 @@ class OrderForm(forms.ModelForm):
     }, choices=addresses))
     promocode_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'promo-code-input'
-    }))
+    }), required=False)
 
     class Meta:
         model = Order
