@@ -200,7 +200,7 @@
     margin-bottom: 30px;
 }
 
-.promo-code-area {
+#id_promocode_name {
     width: 148px;
     border: 2px solid #CACACA;
     border-radius: 18px;

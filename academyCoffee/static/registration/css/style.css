@@ -83,7 +83,7 @@ button:active {
     margin-bottom: 30px;
 }
 
-.email-input {
+#id_email {
     width: 850px;
     margin-bottom: 30px;
 }
@@ -146,13 +146,13 @@ button {
     text-align: center;
 }
 
-select {
+#regions {
     width: 395px;
     height: 40px;
     border: 1px solid #AFAFAF;
     border-radius: 40px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
     padding: 5px 15px;
 }
