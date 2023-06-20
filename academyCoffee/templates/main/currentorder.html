@@ -36,6 +36,7 @@
                     </li>
                 </ul>
             </div>
+        {% if lastorder and lastorder.status != 3 %}
             <div class="personal-account-right-container">
                 <div class="order-status">
                     <!--Тут по состоянию заказа нужно сделать-->
@@ -94,6 +95,7 @@
                     </div>
                 </div>
             </div>
+        {% endif %}
         </div>
     </main>
 {% endblock %}

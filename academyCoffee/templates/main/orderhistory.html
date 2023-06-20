@@ -14,7 +14,8 @@
         <div class="personal-line"></div>
         <div class="main-container">
             <div class="personal-account-left-container">
-                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112" height="112">
+                <img class="personal-avatar" src="{% static 'personalaccount/img/avatar_account.svg' %}" width="112"
+                     height="112">
                 <p class="personal-name">{{ user.first_name }}</p>
                 <ul class="personal-account-nav-list">
                     <li class="personal-account-nav-list-item">
@@ -117,7 +118,11 @@
                                                     <p class="status-text">{{ order.get_status_display }}</p>
                                                     <p class="order-date">{{ order.created }}</p>
                                                 </div>
-                                                <p class="total-price">{{ order.basket_history.total_sum }}</p>
+                                                {% if order.promocode_name == 'СКИДКА' %}
+                                                    <p class="total-price">{{ order.basket_history.stock_sum }}</p>
+                                                {% else %}
+                                                    <p class="total-price">{{ order.basket_history.total_sum }}</p>
+                                                {% endif %}
                                             </div>
                                             <div class="order-list-line"></div>
                                         </li>
