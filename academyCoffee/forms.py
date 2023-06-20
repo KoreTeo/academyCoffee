@@ -154,7 +154,8 @@ class CreateUserCardForm(forms.ModelForm):
 
 class SubscribeForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput(attrs={
-        'class': 'email-subscribe-form'
+        'class': 'email-subscribe-form',
+        'placeholder': 'name@mail.ru'
     }))
 
     class Meta:

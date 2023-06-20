@@ -227,10 +227,10 @@
 }
 
 .email-subscribe-form {
-    width: 344px;
+    width: 386px;
     height: 40px;
     background: #FFFFFF;
-    border: 2px solid #000000;
+    border: 1px solid #868686;
     border-radius: 85px;
     padding: 8px 20px;
     font-weight: 500;
@@ -238,6 +238,7 @@
     line-height: 24px;
     text-align: justify;
     margin-bottom: 15px;
+
 }
 
 .email-subscribe-container form {
@@ -249,7 +250,7 @@
     display: block;
     background: rgba(72, 212, 196, 0.29);
     border-radius: 40px;
-    width: 396px;
+    width: 426px;
     height: 42px;
     font-weight: 500;
     font-size: 20px;

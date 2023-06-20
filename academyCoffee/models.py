@@ -41,9 +41,10 @@ class User(AbstractUser):
     regions = [
         ('Красноярск', 'Красноярск'),
         ('Москва', 'Москва'),
-        ('Санкт-Петерург', 'Санкт-Петерург'),
+        ('Санкт-Петербург', 'Санкт-Петербург'),
         ('Новосибирск', 'Новосибирск'),
     ]
+    username = models.CharField(unique=False, blank=True, null=True, max_length=20)
     region = models.TextField('Регион', max_length=50, choices=regions, blank=True)
     PNumber = PhoneNumberField('Номер телефона', blank=False, null=False, unique=True, region="RU")
     DateOfBirth = models.DateField("День рождения", default=timezone.now)

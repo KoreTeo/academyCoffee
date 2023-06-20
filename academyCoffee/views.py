@@ -153,6 +153,10 @@ class UserLoginView(TitleMixin, LoginView):
 
 
 def menu(request):
+    if request.user.is_authenticated:
+        baskets = Basket.objects.filter(user=request.user)
+    else:
+        baskets = Basket.objects.filter(user__first_name='BBBBBBBBB')
     context = {
         'title': "Меню",
         'products': Product.objects.all(),
@@ -162,7 +166,7 @@ def menu(request):
         'productsWithCategory4': Product.objects.filter(category__name="АВТОРСКИЕ НАПИТКИ"),
         'productsWithCategory5': Product.objects.filter(category__name="К КОФЕ"),
         'productsWithCategory6': Product.objects.filter(category__name="НАША КУХНЯ"),
-        'baskets': Basket.objects.filter(user=request.user)
+        'baskets': baskets
 
     }
     return render(request, 'main/menu.html', context)

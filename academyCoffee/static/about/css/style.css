@@ -142,9 +142,10 @@ input[type="radio"] {
     width: 20px;
     height: 20px;
     margin: 0;
+    filter: grayscale(1);
 }
 
-input[type="text"] {
+input[type="text"], #id_email {
     background: #FFFFFF;
     border: 1px solid #B4B4B4;
     border-radius: 15px;
@@ -155,7 +156,7 @@ input[type="text"] {
     line-height: 24px;
 }
 
-#text-content-form {
+#id_text {
     min-width: 491px;
     min-height: 120px;
     background: #FFFFFF;
